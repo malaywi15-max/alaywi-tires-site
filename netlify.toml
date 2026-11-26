@@ -1,0 +1,13 @@
+# Netlify settings. Netlify reads this file on every push to GitHub.
+# The finished site is already built into dist/ (run `python build.py`
+# before committing), so Netlify only has to publish that folder.
+
+[build]
+  publish = "dist"
+
+# Keep search engines from listing the site while the tire list and
+# prices are sample data. Delete this block once the real list is in.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"

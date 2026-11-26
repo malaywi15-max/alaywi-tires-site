@@ -1,0 +1,1824 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alaywi Tires</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Alaywi Tires in Choueifat, open 24/7. New tires from every major brand, used tires, oil, brakes, wheel balancing and roadside tire help.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@600;800;900&display=swap">
+<style>
+:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+/* Layout: shop-sign header, a hero that teaches how to read a tire sidewall,
+   then the tire finder (the page's main job), used tires, services, about, and contact. */
+:root {
+  --bg: #FFFFFF;        /* page background */
+  --surface: #FFFFFF;   /* cards and panels */
+  --sunk: #E1E3DD;
+  --stage: #E4E6E1;     /* backdrop behind tire images */
+  --ink: #1B1E20;       /* tire rubber */
+  --muted: #596064;
+  --line: #CBCEC7;
+  --accent: #F2B300;    /* yellow price-tag sticker */
+  --accent-ink: #1B1E20;
+  --instock: #2D7258;
+  --order: #1E5FA8;
+  --wa: #168A4A;        /* WhatsApp buttons */
+  --wa-ink: #FFFFFF;
+  --band: #1B1E20;
+  --band-ink: #F1F1EC;
+  --band-muted: #A3A9A7;
+  --f-display: "Big Shoulders Display", "Noto Kufi Arabic", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Barlow", "IBM Plex Sans Arabic", "Segoe UI", Tahoma, system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", "IBM Plex Sans Arabic", ui-monospace, Consolas, monospace;
+  --r: 6px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121415; --surface: #1B1E20; --sunk: #0E1011; --stage: #2A2E31; --ink: #ECEDE7; --muted: #9EA5A3; --line: #2D3234;
+  --accent: #F5C02B; --accent-ink: #151718; --instock: #6CC59F; --order: #7DB2F0; --wa: #1E9E57; --wa-ink: #FFFFFF;
+  --band: #0B0C0D; --band-ink: #F1F1EC; --band-muted: #959C9A; color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --bg: #121415; --surface: #1B1E20; --sunk: #0E1011; --stage: #2A2E31; --ink: #ECEDE7; --muted: #9EA5A3; --line: #2D3234;
+  --accent: #F5C02B; --accent-ink: #151718; --instock: #6CC59F; --order: #7DB2F0; --wa: #1E9E57; --wa-ink: #FFFFFF;
+  --band: #0B0C0D; --band-ink: #F1F1EC; --band-muted: #959C9A; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body { background: var(--bg); color: var(--ink); font: 400 17px/1.55 var(--f-body); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--band); }
+[id] { scroll-margin-top: 76px; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 800; line-height: 1; text-wrap: balance; margin: 0; letter-spacing: .01em; }
+h2 { font-size: clamp(2.2rem, 5vw, 3.4rem); text-transform: uppercase; }
+p { margin: 0; }
+svg.i { width: 1.25em; height: 1.25em; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font: 600 .78rem/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+section { padding-block: clamp(56px, 8vw, 96px); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 700 1rem/1 var(--f-body); padding: 13px 18px; border-radius: var(--r); text-decoration: none; border: 2px solid transparent; cursor: pointer; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.wa { background: var(--wa); color: var(--wa-ink); }
+.btn.line { border-color: var(--line); color: var(--ink); background: var(--surface); }
+.btn.line:hover { border-color: var(--ink); }
+
+/* Header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--band); color: var(--band-ink); }
+.top .wrap { display: flex; align-items: center; gap: 20px; padding-block: 11px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 900 1.55rem/1 var(--f-display); text-transform: uppercase; letter-spacing: .02em; white-space: nowrap; }
+.logo svg { width: 30px; height: 30px; }
+.nav { display: flex; gap: 18px; margin-inline-start: auto; flex-wrap: wrap; }
+.nav a { text-decoration: none; font-weight: 600; font-size: .95rem; color: var(--band-muted); }
+.nav a:hover { color: var(--band-ink); }
+.open247 { font: 600 .78rem/1 var(--f-mono); letter-spacing: .06em; color: var(--accent); border: 1px solid var(--accent); padding: 7px 8px; border-radius: 4px; white-space: nowrap; }
+.top .btn { padding: 9px 13px; font-size: .95rem; }
+@media (max-width: 980px) { .nav { display: none; } .open247 { margin-inline-start: auto; } }
+@media (max-width: 760px) { .top .btn { display: none; } }
+
+/* Hero */
+.hero { background: var(--band); color: var(--band-ink); padding-block: clamp(40px, 7vw, 84px) clamp(48px, 7vw, 88px); }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } }
+.hero h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; text-transform: uppercase; line-height: .9; }
+.hero h1 span { color: var(--accent); }
+.hero p.lead { color: var(--band-muted); font-size: 1.15rem; max-width: 34em; margin-top: 20px; }
+.hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.hero-tags { display: flex; gap: 8px 18px; flex-wrap: wrap; margin-top: 30px; font: 500 .85rem/1.2 var(--f-mono); color: var(--band-muted); }
+.hero-tags span::before { content: "■ "; color: var(--accent); }
+
+/* Sidewall reading lesson */
+.sidewall { border: 1px solid #ffffff22; border-radius: 14px; padding: clamp(22px, 4vw, 36px); background: repeating-linear-gradient(115deg, #ffffff06 0 10px, transparent 10px 22px); min-width: 0; }
+.sidewall .eyebrow { color: var(--band-muted); }
+.code { display: flex; align-items: flex-end; gap: clamp(4px, 1.2vw, 12px); margin-top: 18px; font-family: var(--f-display); font-weight: 900; font-size: clamp(2.6rem, 6.4vw, 4.8rem); line-height: .85; flex-wrap: nowrap; }
+.code .sep, .code .rim-r { color: var(--band-muted); font-weight: 600; }
+.code .part { padding-bottom: 12px; border-bottom: 3px solid var(--accent); }
+.legend { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 22px; }
+.legend div { font-size: .92rem; color: var(--band-muted); line-height: 1.35; }
+.legend b { display: block; color: var(--band-ink); font: 600 .8rem/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+.sidewall .tip { margin-top: 20px; padding-top: 16px; border-top: 1px dashed #ffffff26; font-size: .92rem; color: var(--band-muted); }
+@media (max-width: 480px) { .legend { grid-template-columns: 1fr; } }
+
+/* Finder */
+.finder-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; }
+.finder-head p { color: var(--muted); max-width: 40em; margin-top: 12px; }
+.demo { display: inline-block; margin-top: 10px; font: 600 .74rem/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent); padding: 5px 7px; border-radius: 3px; }
+.tabs { display: inline-flex; background: var(--sunk); padding: 4px; border-radius: 10px; gap: 4px; }
+.tabs button { font: 700 1rem/1 var(--f-body); padding: 12px 18px; border: 0; border-radius: 7px; background: transparent; color: var(--muted); cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px #0000001f; }
+.panel { margin-top: 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: clamp(18px, 3vw, 30px); }
+.selects { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+@media (max-width: 860px) { .selects { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 420px) { .selects { grid-template-columns: 1fr; } }
+label.f { display: grid; gap: 6px; font: 600 .78rem/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); min-width: 0; }
+select { font: 600 1.05rem/1.2 var(--f-body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: var(--r); padding: 12px; width: 100%; }
+select:disabled { opacity: .5; }
+
+.fit { margin-top: 22px; }
+.fit-title { font: 800 1.6rem/1.1 var(--f-display); text-transform: uppercase; }
+.fit-note { color: var(--muted); font-size: .95rem; margin-top: 6px; }
+.fit-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.fit-opt { display: grid; gap: 4px; text-align: start; cursor: pointer; border: 2px solid var(--line); background: var(--bg); color: var(--ink); border-radius: var(--r); padding: 10px 14px; font: inherit; }
+.fit-opt .sz { font: 600 1.1rem/1.2 var(--f-mono); }
+.fit-opt .sz small { font: 500 .72rem/1 var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-inline-end: 4px; }
+.fit-opt .tr { font-size: .85rem; color: var(--muted); }
+.fit-opt .st { font: 600 .72rem/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--instock); }
+.fit-opt[aria-pressed="true"] { border-color: var(--accent); background: var(--surface); box-shadow: inset 0 0 0 1px var(--accent); }
+
+.readout { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 20px; }
+.readout .code { color: var(--ink); font-size: clamp(2.4rem, 7vw, 4rem); margin: 0; }
+.readout .code .part { border-color: var(--line); min-width: 1.6em; text-align: center; padding-bottom: 6px; }
+.readout .code .part.set { border-color: var(--accent); }
+.readout .code .part.empty { color: var(--line); }
+.readout .code .sep, .readout .code .rim-r { color: var(--muted); }
+.clear { margin-inline-start: auto; font: 600 .9rem/1 var(--f-body); background: none; border: 1px solid var(--line); color: var(--muted); padding: 9px 12px; border-radius: var(--r); cursor: pointer; }
+.clear:hover { color: var(--ink); border-color: var(--ink); }
+
+/* Results */
+.bar { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; margin-top: 32px; }
+.count { font: 800 1.5rem/1.1 var(--f-display); text-transform: uppercase; margin-inline-end: auto; }
+.count small { display: block; font: 500 .95rem/1.3 var(--f-body); color: var(--muted); text-transform: none; margin-top: 4px; }
+.bar select { width: auto; font-size: .95rem; padding: 9px 10px; background: var(--surface); }
+.note { margin-top: 16px; padding: 14px 16px; border-radius: 8px; background: var(--sunk); color: var(--ink); font-size: .95rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin-top: 18px; }
+.tire { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; grid-template-columns: minmax(0, 1fr); min-width: 0; }
+.tire-img { background: var(--stage); display: grid; place-items: center; padding: 14px; aspect-ratio: 4 / 3; max-width: 100%; }
+.tire-img svg, .dlg-img svg { width: 100%; height: 100%; max-height: 210px; filter: drop-shadow(0 8px 10px #00000040); }
+.tire-body { padding: 16px; display: grid; gap: 8px; align-content: start; }
+.brand-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 8px; }
+.brand { font: 900 1.25rem/1 var(--f-display); text-transform: uppercase; letter-spacing: .04em; }
+.badge-used { font: 600 .66rem/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); padding: 5px 6px; border-radius: 4px; white-space: nowrap; }
+.model { color: var(--muted); font-size: .95rem; line-height: 1.3; }
+.tsize { font: 600 1.4rem/1 var(--f-mono); letter-spacing: -.01em; margin-top: 2px; }
+.meta { display: flex; gap: 4px 12px; flex-wrap: wrap; font-size: .86rem; color: var(--muted); }
+.origin { display: flex; align-items: center; gap: 6px; font-weight: 600; font-size: .92rem; }
+.origin svg.i { width: 1.05em; height: 1.05em; color: var(--muted); }
+.avail { font: 600 .78rem/1.2 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
+.avail::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.avail { color: var(--instock); }
+.price-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding-top: 12px; margin-top: 4px; border-top: 1px dashed var(--line); }
+.price { font: 800 1.9rem/1 var(--f-display); font-variant-numeric: tabular-nums; }
+.price small { font: 500 .82rem/1 var(--f-body); color: var(--muted); margin-inline-start: 3px; }
+.price.ask { font: 700 1rem/1.1 var(--f-body); }
+.details { font: 700 .9rem/1 var(--f-body); padding: 10px 12px; border-radius: var(--r); border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; white-space: nowrap; }
+.details:hover { background: var(--ink); color: var(--bg); }
+/* Phones: compact cards with the picture on the left, so the list is quicker to scroll */
+@media (max-width: 560px) {
+  .grid { grid-template-columns: 1fr; gap: 10px; }
+  .tire { grid-template-columns: 112px 1fr; grid-template-rows: none; }
+  .tire-img { aspect-ratio: auto; padding: 10px; }
+  .tire-body { padding-block: 12px; padding-inline: 4px 12px; gap: 5px; }
+  .brand { font-size: 1.1rem; }
+  .tsize { font-size: 1.15rem; }
+  .badge-used { display: none; }
+  .price { font-size: 1.5rem; }
+  .price-row { padding-top: 8px; }
+  .details { padding: 8px 10px; font-size: .85rem; }
+}
+.more { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 20px; }
+.more .shown { color: var(--muted); font-size: .95rem; margin-inline-end: auto; }
+.help { margin-top: 28px; padding: clamp(20px, 3vw, 28px); border-radius: 12px; border: 2px dashed var(--line); display: grid; grid-template-columns: 1fr auto; gap: 16px 24px; align-items: center; }
+@media (max-width: 700px) { .help { grid-template-columns: 1fr; } }
+.help b { font: 800 1.5rem/1.1 var(--f-display); text-transform: uppercase; display: block; }
+.help p { color: var(--muted); margin-top: 6px; max-width: 42em; }
+.help .acts { display: flex; gap: 10px; flex-wrap: wrap; }
+.disclaim { margin-top: 16px; font-size: .85rem; color: var(--muted); }
+
+/* Back to search + mobile action bar */
+.tosearch { position: fixed; z-index: 25; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); display: inline-flex; gap: 8px; align-items: center; font: 700 .95rem/1 var(--f-body); padding: 13px 18px; border-radius: 999px; border: 0; background: var(--ink); color: var(--bg); box-shadow: 0 6px 18px #00000047; cursor: pointer; }
+.mbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: none; gap: 10px; background: var(--band);
+  padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.mbar .btn { padding: 12px 10px; }
+.mbar .btn.call { background: var(--band-ink); color: var(--band); }
+@media (max-width: 760px) {
+  .mbar { display: grid; grid-template-columns: 1fr 1fr; }
+  body { padding-bottom: 72px; }
+  .tosearch { bottom: calc(82px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* Details dialog */
+dialog#dlg { border: 0; padding: 0; border-radius: 14px; width: min(880px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); background: var(--surface); color: var(--ink); box-shadow: 0 20px 60px #00000059; }
+dialog#dlg::backdrop { background: rgb(8 9 10 / .62); }
+.dlg-grid { display: grid; grid-template-columns: 1fr 1fr; }
+@media (max-width: 700px) { .dlg-grid { grid-template-columns: 1fr; } }
+.dlg-img { background: var(--stage); display: grid; place-items: center; padding: 28px; min-height: 260px; }
+.dlg-img svg { max-height: 320px; }
+.dlg-body { padding: 26px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.dlg-body h3 { font-size: 2rem; text-transform: uppercase; }
+.specs { display: grid; grid-template-columns: auto 1fr; gap: 8px 18px; margin: 0; padding-block: 14px; border-block: 1px solid var(--line); }
+.specs dt { font: 600 .74rem/1.6 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.specs dd { margin: 0; font-weight: 600; }
+.dlg-close { position: absolute; top: 12px; inset-inline-end: 12px; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.dlg-acts { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* Used tires */
+.used-head, .svc-head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: end; }
+.used-head p, .svc-head p { color: var(--muted); }
+@media (max-width: 760px) { .used-head, .svc-head { grid-template-columns: 1fr; } }
+.used-list { margin-top: 32px; display: grid; gap: 0; border-top: 2px solid var(--ink); }
+.ugroup { display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding-block: 16px; border-bottom: 1px solid var(--line); align-items: start; }
+@media (max-width: 560px) { .ugroup { grid-template-columns: 1fr; gap: 10px; } }
+.ugroup h3 { font-size: 1.5rem; }
+.ugroup h3 small { display: block; font: 500 .8rem/1.3 var(--f-body); color: var(--muted); margin-top: 3px; }
+.ulinks { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; }
+.ulink { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font: 600 1rem/1 var(--f-mono); padding: 10px 12px; border-radius: var(--r); border: 1px solid var(--line); background: var(--surface); }
+.ulink span { font: 700 .72rem/1 var(--f-body); color: var(--wa); text-transform: uppercase; letter-spacing: .04em; }
+.ulink:hover { border-color: var(--wa); }
+.used-foot { margin-top: 20px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; color: var(--muted); }
+
+/* Services */
+.services { background: var(--surface); border-block: 1px solid var(--line); }
+.svc-list { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+@media (max-width: 1000px) { .svc-list { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px) { .svc-list { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .svc-list { grid-template-columns: 1fr; } }
+.svc-list li { padding: 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); display: grid; gap: 10px; grid-template-rows: auto auto 1fr auto; }
+.svc-ico { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); }
+.svc-ico svg { width: 24px; height: 24px; }
+.svc-list h3 { font-size: 1.45rem; text-transform: uppercase; }
+.svc-list p { color: var(--muted); font-size: .95rem; line-height: 1.45; }
+.svc-price { font: 600 .8rem/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--ink); padding-top: 10px; border-top: 1px dashed var(--line); }
+.svc-prices { display: grid; gap: 8px; }
+.svc-prices div { display: flex; justify-content: space-between; gap: 12px; }
+
+/* About */
+.about .wrap { display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(32px, 6vw, 80px); }
+@media (max-width: 860px) { .about .wrap { grid-template-columns: 1fr; } }
+.about-body { display: grid; gap: 18px; font-size: 1.08rem; max-width: 36em; min-width: 0; }
+.about-body p:first-child::first-letter { font: 900 4.2rem/.8 var(--f-display); float: left; margin: 6px 10px 0 0; }
+.promise { font: 800 clamp(1.8rem, 3.6vw, 2.6rem)/1.05 var(--f-display); text-transform: uppercase; margin-top: 22px; padding-inline-start: 18px; border-inline-start: 6px solid var(--accent); }
+.promise small { display: block; font: 600 .78rem/1.3 var(--f-mono); letter-spacing: .1em; color: var(--muted); margin-bottom: 8px; }
+.facts { list-style: none; padding: 0; margin: 28px 0 0; }
+.facts li { display: grid; grid-template-columns: 92px 1fr; gap: 14px; padding: 12px 0; border-top: 1px solid var(--line); font-size: .98rem; }
+.facts b { font: 900 1.3rem/1.2 var(--f-display); text-transform: uppercase; }
+
+/* Contact */
+.contact { background: var(--band); color: var(--band-ink); }
+.contact .wrap { display: grid; grid-template-columns: 1.1fr 1fr 1fr 1fr; gap: 32px; }
+@media (max-width: 980px) { .contact .wrap { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .contact .wrap { grid-template-columns: 1fr; } }
+.contact h2 { color: var(--band-ink); }
+.contact p { color: var(--band-muted); margin-top: 14px; max-width: 30em; }
+.contact h3 { font-size: 1.2rem; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.cblock { display: grid; gap: 10px; align-content: start; }
+.cblock .big { font: 600 1.35rem/1.2 var(--f-mono); color: var(--band-ink); user-select: all; }
+.cblock .sub { color: var(--band-muted); font-size: .92rem; }
+.cblock .btn { justify-self: start; }
+.btn.ghost { border-color: #ffffff38; color: var(--band-ink); background: transparent; }
+.btn.ghost:hover { border-color: var(--band-ink); }
+.ar { font-family: "Segoe UI", Tahoma, system-ui, sans-serif; }
+footer { background: var(--band); color: var(--band-muted); font-size: .85rem; }
+footer .wrap { padding-block: 22px 28px; border-top: 1px solid #ffffff1a; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+/* Text inside the drawn tire images */
+.sw-brand { font-family: var(--f-display); font-weight: 900; letter-spacing: .08em; }
+.sw-size { font-family: var(--f-mono); font-weight: 600; letter-spacing: .04em; }
+
+/* Main "Tires" service card: twice as wide, so the 11 cards fill every row */
+.svc-list li.wide { grid-column: span 2; }
+@media (max-width: 480px) { .svc-list li.wide { grid-column: auto; } }
+.svc-link { justify-self: start; display: inline-flex; align-items: center; gap: 8px; font: 700 .95rem/1 var(--f-body); text-decoration: none; color: var(--accent-ink); background: var(--accent); padding: 11px 14px; border-radius: var(--r); margin-top: 4px; }
+.svc-link:hover { filter: brightness(1.05); }
+[dir="rtl"] .svc-link svg { transform: scaleX(-1); }
+
+/* Language switch button */
+.lang { font: 700 .92rem/1 var(--f-body); color: var(--band-ink); background: transparent; border: 1px solid #ffffff38; border-radius: 4px; padding: 7px 10px; cursor: pointer; white-space: nowrap; }
+.lang:hover { border-color: var(--band-ink); }
+@media (max-width: 980px) { .lang { margin-inline-start: auto; } .open247 { margin-inline-start: 0; } }
+@media (max-width: 400px) { .open247 { display: none; } .logo { font-size: 1.35rem; } }
+
+/* Arabic (right-to-left). Tire sizes and phone numbers always read left to right. */
+.code { direction: ltr; }
+.legend { direction: ltr; }
+[dir="rtl"] .legend > div { direction: rtl; }
+[dir="rtl"] * { letter-spacing: normal !important; }
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 { line-height: 1.35; }
+[dir="rtl"] .hero h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1.3; }
+[dir="rtl"] h2 { font-size: clamp(1.9rem, 4.2vw, 2.8rem); }
+[dir="rtl"] :is(.count, .fit-title, .help b, .promise, .facts b, .brand, .ugroup h3, .svc-list h3, .dlg-body h3, .logo) { line-height: 1.45; }
+[dir="rtl"] .about-body p:first-child::first-letter { font: inherit; float: none; margin: 0; }
+[dir="rtl"] .tosearch { right: auto; left: calc(16px + env(safe-area-inset-left, 0px)); }
+[dir="rtl"] .hero-tags, [dir="rtl"] .eyebrow, [dir="rtl"] .avail, [dir="rtl"] .badge-used, [dir="rtl"] .svc-price, [dir="rtl"] .open247 { font-family: var(--f-body); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tire" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/></symbol>
+    <symbol id="i-used" viewBox="0 0 24 24"><circle cx="10" cy="11" r="7.5"/><circle cx="10" cy="11" r="3"/><path d="m15 19 2 2 4-4"/></symbol>
+    <symbol id="i-repair" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></symbol>
+    <symbol id="i-n2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M7.5 15.5v-7l5 7v-7M14.8 13.2c.3-.6.9-.9 1.5-.9.8 0 1.4.6 1.4 1.3 0 1.4-2.9 1.9-2.9 2.9h2.9"/></symbol>
+    <symbol id="i-oil" viewBox="0 0 24 24"><path d="M12 3c-3 4.5-6 7.8-6 11a6 6 0 0 0 12 0c0-3.2-3-6.5-6-11z"/><path d="M9.5 15a2.5 2.5 0 0 0 2.5 2.5"/></symbol>
+    <symbol id="i-steer" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.2"/><path d="M3.3 10.5h6.5M14.2 10.5h6.5M12 14.2V21"/></symbol>
+    <symbol id="i-balance" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="2"/><rect x="10.5" y="6.2" width="3" height="2" rx=".5"/><path d="M2.5 12A9.5 9.5 0 0 1 5.28 5.28M2.82 5.71L5.28 5.28 4.85 7.74M21.5 12a9.5 9.5 0 0 1-2.78 6.72M21.18 18.29l-2.46.43.43-2.46"/></symbol>
+    <symbol id="i-brake" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path d="M4.6 8.6a8.5 8.5 0 0 1 4-4.4l1.2 3a5.5 5.5 0 0 0-2.4 2.6z"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4L17 12H5"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M3 17a9 9 0 1 1 18 0"/><path d="m12 17 4.5-6"/><circle cx="12" cy="17" r="1.5"/></symbol>
+    <symbol id="i-wiper" viewBox="0 0 24 24"><path d="M2 20a14 14 0 0 1 20 0"/><path d="M12 20 6.5 7"/></symbol>
+    <symbol id="i-road" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="3"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 20.5l1.4-4A8.5 8.5 0 1 1 8.6 19.2z"/><path d="M9 10.5h6M9 13.5h4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h3.5l2 5-2.4 1.5a11 11 0 0 0 6.4 6.4L16 13.5l5 2V19a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top"><svg class="i" aria-hidden="true"><use href="#i-tire"/></svg><span data-i18n="logo">Alaywi Tires</span></a>
+    <nav class="nav" data-i18n-aria="nav.aria" aria-label="Main">
+      <a href="#finder" data-i18n="nav.new">New tires</a>
+      <a href="#used" data-i18n="nav.used">Used tires</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <button class="lang" id="langBtn" type="button" lang="ar" aria-label="Switch to Arabic">عربي</button>
+    <span class="open247" data-i18n="open247">OPEN 24/7</span>
+    <a class="btn wa" data-href="wa" href="#contact" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg><span data-i18n="wa">WhatsApp</span></a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1 data-i18n-html="hero.h1">Any tire. Any size. <span>Open 24/7.</span></h1>
+        <p class="lead" data-i18n="hero.lead">New tires from every major brand in almost every size, plus hand-checked used tires. Pick your car below and see exactly which tires fit it.</p>
+        <div class="ctas">
+          <a class="btn primary" href="#finder" data-i18n="hero.cta1">Find tires for my car</a>
+          <a class="btn wa" data-href="wa" href="#contact" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg><span data-i18n="waUs">WhatsApp us</span></a>
+        </div>
+        <div class="hero-tags"><span data-i18n="hero.tag1">Open 24 hours, 7 days</span><span data-i18n="hero.tag2">Choueifat El Aamroussieh</span><span data-i18n="hero.tag3">Roadside tire help</span></div>
+      </div>
+      <div class="sidewall" data-i18n-aria="lesson.title" aria-label="How to read a tire size">
+        <div class="eyebrow" data-i18n="lesson.title">How to read your tire size</div>
+        <div class="code" aria-hidden="true">
+          <span class="part">205</span><span class="sep">/</span><span class="part">55</span><span class="rim-r">R</span><span class="part">16</span>
+        </div>
+        <div class="legend">
+          <div><b data-i18n="f.width">Width</b><span data-i18n="lesson.w">205 mm across the tread, wall to wall.</span></div>
+          <div><b data-i18n="f.height">Height</b><span data-i18n="lesson.a">Sidewall height is 55% of the width.</span></div>
+          <div><b data-i18n="f.rim">Rim</b><span data-i18n="lesson.r">Fits a 16-inch wheel. R means radial.</span></div>
+        </div>
+        <p class="tip" data-i18n="lesson.tip">Your size is printed on the tire sidewall and on the sticker inside the driver's door.</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="finder">
+    <div class="wrap">
+      <div class="finder-head">
+        <div>
+          <div class="eyebrow"><span data-i18n="nav.new">New tires</span> · <span id="stockTotal"></span></div>
+          <h2 style="margin-top:12px" data-i18n="finder.h2">Find your tires</h2>
+          <p data-i18n="finder.p">Search by your car, or by the size on your tire. Every choice narrows the list to tires that exist, so you never land on a size we can't match.</p>
+          <span class="demo" data-i18n="finder.demo">Demo catalog: sample prices and stock</span>
+        </div>
+        <div class="tabs" role="tablist" data-i18n-aria="tabs.aria" aria-label="Search method">
+          <button role="tab" id="tab-car" aria-selected="true" aria-controls="panel-car" data-i18n="tabs.car">By vehicle</button>
+          <button role="tab" id="tab-size" aria-selected="false" aria-controls="panel-size" data-i18n="tabs.size">By tire size</button>
+        </div>
+      </div>
+
+      <div id="searchArea">
+        <div class="panel" id="panel-car" role="tabpanel" aria-labelledby="tab-car">
+          <div class="selects">
+            <label class="f" for="make"><span data-i18n="f.make">Make</span><select id="make"></select></label>
+            <label class="f" for="model"><span data-i18n="f.model">Model</span><select id="model" disabled></select></label>
+            <label class="f" for="years"><span data-i18n="f.years">Years</span><select id="years" disabled></select></label>
+            <label class="f" for="carBrand"><span data-i18n="f.brand">Brand</span><select id="carBrand" disabled></select></label>
+          </div>
+          <div class="fit" id="fit"></div>
+        </div>
+
+        <div class="panel" id="panel-size" role="tabpanel" aria-labelledby="tab-size" hidden>
+          <div class="readout">
+            <div class="code" id="readout" aria-live="polite"></div>
+            <button class="clear" id="clearSize" type="button" data-i18n="clearSize">Clear size</button>
+          </div>
+          <div class="selects">
+            <label class="f" for="sw"><span data-i18n="f.width">Width</span><select id="sw"></select></label>
+            <label class="f" for="sa"><span data-i18n="f.height">Height</span><select id="sa" disabled></select></label>
+            <label class="f" for="sr"><span data-i18n="f.rim">Rim</span><select id="sr" disabled></select></label>
+            <label class="f" for="sb"><span data-i18n="f.brand">Brand</span><select id="sb"></select></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="bar" id="results">
+        <div class="count" id="count"></div>
+        <select id="type" data-i18n-aria="type.aria" aria-label="Tire type">
+          <option value="" data-i18n="type.any">Any type</option>
+          <option value="Summer" data-i18n="type.Summer">Summer</option>
+          <option value="All-Season" data-i18n="type.All-Season">All-Season</option>
+          <option value="Performance" data-i18n="type.Performance">Performance</option>
+          <option value="SUV Highway" data-i18n="type.SUV Highway">SUV Highway</option>
+          <option value="All-Terrain" data-i18n="type.All-Terrain">All-Terrain</option>
+        </select>
+        <select id="sort" data-i18n-aria="sort.aria" aria-label="Sort">
+          <option value="rec" data-i18n="sort.rec">Sort: recommended</option>
+          <option value="low" data-i18n="sort.low">Price: low to high</option>
+          <option value="high" data-i18n="sort.high">Price: high to low</option>
+          <option value="size" data-i18n="sort.size">Size</option>
+        </select>
+      </div>
+      <div id="noteBox"></div>
+      <div class="grid" id="grid"></div>
+      <div class="more" id="moreBox"></div>
+      <div class="help" id="helpBox"></div>
+      <p class="disclaim" data-i18n="disclaim">Prices are per tire in USD and can change. Fitment shown is the factory size for each trim; check your door sticker or ask us if your car has different wheels.</p>
+    </div>
+  </section>
+
+  <section id="used">
+    <div class="wrap">
+      <div class="used-head">
+        <div><div class="eyebrow" data-i18n="nav.used">Used tires</div><h2 style="margin-top:12px" data-i18n="used.h2">Usually available</h2></div>
+        <p data-i18n="used.p">Hand-checked used tires in the sizes below. Stock changes every day, so tap your size to ask us on WhatsApp before you come. Contact us for price.</p>
+      </div>
+      <div class="used-list" id="usedList"></div>
+      <div class="used-foot"><span data-i18n="used.notListed">Size not listed?</span><a class="btn wa" data-href="wa-used" href="#contact" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg><span data-i18n="used.askOther">Ask about another size</span></a></div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="svc-head">
+        <div><div class="eyebrow" data-i18n="svc.eyebrow">In the bays</div><h2 style="margin-top:12px" data-i18n="svc.h2">Our services</h2></div>
+        <p data-i18n="svc.p">Most jobs are done while you wait. We're open around the clock, so come by whenever suits you.</p>
+      </div>
+      <ul class="svc-list" id="svcList"></ul>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow" data-i18n="nav.about">About us</div>
+        <h2 style="margin-top:12px" data-i18n="about.h2">The tire shop that never closes</h2>
+        <div class="promise"><small data-i18n="about.promiseLabel">OUR PROMISE</small><span data-i18n="about.promise">If a tire isn't safe, we won't sell it.</span></div>
+        <ul class="facts">
+          <li><b data-i18n="about.f1t">24/7</b><span data-i18n="about.f1">Open every hour of every day.</span></li>
+          <li><b data-i18n="about.f2t">Every brand</b><span data-i18n="about.f2">All the major tire brands in almost every size.</span></li>
+          <li><b data-i18n="about.f3t">Roadside</b><span data-i18n="about.f3">Flat tire on the road? Call us and we'll help.</span></li>
+        </ul>
+      </div>
+      <div class="about-body">
+        <p data-i18n="about.p1"></p>
+        <p data-i18n="about.p2"></p>
+        <p data-i18n="about.p3"></p>
+        <p data-i18n="about.p4"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow" style="color:var(--band-muted)" data-i18n="nav.contact">Contact</div>
+        <h2 style="margin-top:12px" data-i18n="contact.h2">Come by any time</h2>
+        <p data-i18n="contact.p">Found a tire on this page? Send us the size on WhatsApp and we'll have it ready when you arrive.</p>
+      </div>
+      <div class="cblock">
+        <h3 data-i18n="contact.hours">Hours</h3>
+        <div class="big" data-i18n="contact.open">Open 24/7</div>
+        <div class="sub" data-i18n="contact.openSub">24 hours a day, 7 days a week</div>
+      </div>
+      <div class="cblock">
+        <h3 data-i18n="contact.call">Call or WhatsApp</h3>
+        <div class="big"><bdi dir="ltr" data-shop="phone">05 431 455</bdi></div>
+        <div class="sub" data-i18n="contact.shopPhone">Shop phone</div>
+        <div class="big"><bdi dir="ltr" data-shop="whatsapp">71 188 050</bdi></div>
+        <div class="sub" data-i18n="contact.waMobile">WhatsApp and mobile</div>
+        <a class="btn wa" data-href="wa" href="#contact" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg><span data-i18n="waUs">WhatsApp us</span></a>
+      </div>
+      <div class="cblock">
+        <h3 data-i18n="contact.location">Location</h3>
+        <div style="color:var(--band-ink)" data-i18n="contact.area">Choueifat El Aamroussieh, Lebanon</div>
+        <div class="sub"><span data-i18n="contact.plus">Plus code</span> <bdi dir="ltr" data-shop="plusCode">RG42+57F</bdi></div>
+        <a class="btn ghost" data-href="maps" href="#contact" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-map"/></svg><span data-i18n="contact.directions">Get directions</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span id="copyright"></span><span data-i18n="footer.services">New tires · Used tires · Oil · Brakes · Wheel balancing · Roadside help</span></div></footer>
+
+<button class="tosearch" id="toSearch" type="button" hidden><svg class="i" aria-hidden="true"><use href="#i-up"/></svg><span data-i18n="toSearch">Back to search</span></button>
+<div class="mbar">
+  <a class="btn wa" data-href="wa" href="#contact" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg><span data-i18n="wa">WhatsApp</span></a>
+  <a class="btn call" data-href="tel" href="#contact"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><bdi dir="ltr" data-shop="phone">05 431 455</bdi></a>
+</div>
+
+<dialog id="dlg" aria-labelledby="dlgTitle">
+  <button class="dlg-close" id="dlgClose" type="button" data-i18n-aria="close" aria-label="Close"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button>
+  <div class="dlg-grid">
+    <div class="dlg-img" id="dlgImg"></div>
+    <div class="dlg-body" id="dlgBody"></div>
+  </div>
+</dialog>
+
+<script>
+/* ===== Shop details: change these ===== */
+const SHOP = {
+  phone: "05 431 455",        phoneIntl: "+9615431455",
+  whatsapp: "71 188 050",     whatsappIntl: "96171188050",
+  plusCode: "RG42+57F",
+  mapsQuery: "RG42+57F Choueifat El Aamroussieh, Lebanon",
+};
+
+/* ===== Services: edit text, price and order here =====
+   price: a number = fixed price, "from:25" = "From $25", "free" = "Free", "" = "Contact for price"
+   prices: several options, each with its own name and price (see Tire Repair)
+   note: extra words shown after the price, in both languages
+   wide: true = the card takes two columns (keeps the grid without gaps) */
+const SERVICES = [
+  // link: shows a "View inventory" link to that part of the page instead of a price
+  { icon: "i-tire",   link: "#finder", en: ["Tires", "New tires from every major brand in almost every size, plus hand-checked used tires in the most common sizes."],
+                                 ar: ["الإطارات", "إطارات جديدة من كل الماركات الكبرى وبكل المقاسات تقريباً، بالإضافة إلى إطارات مستعملة مفحوصة يدوياً بأكثر المقاسات شيوعاً."] },
+  { icon: "i-repair", prices: [{ en: "Outside patch", ar: "رقعة خارجية", price: 3 }, { en: "Inside patch", ar: "رقعة داخلية", price: 5.5 }],
+                                 en: ["Tire Repair", "Punctures fixed with an outside or an inside patch, then checked for leaks."],
+                                 ar: ["تصليح الإطارات", "نصلّح الثقوب برقعة خارجية أو داخلية، ثم نفحص الإطار للتأكد من عدم وجود تسريب."] },
+  { icon: "i-n2",     price: 3, en: ["Nitrogen Air", "Nitrogen fill that holds tire pressure steadier and for longer."],
+                                 ar: ["تعبئة نيتروجين", "تعبئة الإطارات بالنيتروجين ليبقى الضغط ثابتاً لفترة أطول."] },
+  { icon: "i-oil",    price: "from:5", en: ["Engine Oil", "Oil and filter change with the right grade for your engine."],
+                                 ar: ["زيت المحرك", "تغيير الزيت والفلتر بالنوع المناسب لمحرك سيارتك."] },
+  { icon: "i-steer",  price: "from:6", en: ["Steering Oil", "Power steering fluid checked, topped up or changed."],
+                                 ar: ["زيت الستيرينغ", "فحص زيت المقود وتعبئته أو تغييره."] },
+  { icon: "i-balance", price: "free", note: { en: "with every purchase of 2 tires", ar: "عند شراء إطارين" },
+                                 en: ["Wheel Balancing", "Wheels balanced on our machine, so the steering doesn't shake at speed and tires wear evenly."],
+                                 ar: ["موازنة الجنوط (بالانس)", "نوازن الجنوط على آلة البالانس لدينا، فلا يرجف المقود على السرعة ويهترئ الإطار بشكل متساوٍ."] },
+  { icon: "i-brake",  price: "", en: ["Brake Pads", "Pads measured and replaced. We show you the old ones."],
+                                 ar: ["فحمات الفرامل", "نقيس الفحمات ونبدّلها، ونريك الفحمات القديمة."] },
+  { icon: "i-gauge",  price: "free", en: ["Tire Inspection", "Tread depth, pressure, tire age and sidewall damage, checked in minutes."],
+                                 ar: ["فحص الإطارات", "فحص عمق النقشة والضغط وعمر الإطار وأضرار الجوانب خلال دقائق."] },
+  { icon: "i-wiper",  price: "from:4", en: ["Wiper Blades", "Blades for most cars, fitted at the counter in a couple of minutes."],
+                                 ar: ["مسّاحات الزجاج", "مسّاحات لمعظم السيارات، نركّبها لك خلال دقيقتين."] },
+  { icon: "i-road",   price: "", wide: true, en: ["Roadside Tire Help", "Flat tire on the road, day or night? Call us and we'll come to you."],
+                                 ar: ["مساعدة على الطريق", "انثقب إطارك على الطريق ليلاً أو نهاراً؟ اتصل بنا ونأتي إليك."] },
+];
+// Make -> Model -> years -> [tire size, which trims use it]. "front|rear" = different sizes front and rear.
+const VEHICLES = {
+  "BMW": {
+    "3 Series": {"2012-2019": [["205/60R16", "316i, 318i"], ["225/50R17", "320i, 328i"], ["225/45R18|255/40R18", "M Sport wheels"]]}
+  },
+  "Chevrolet": {
+    "Cruze": {"2016-2019": [["215/60R16", "LS, LT"], ["225/45R17", "Premier"]]}
+  },
+  "Ford": {
+    "Escape": {"2020-2025": [["225/65R17", "S, SE"], ["225/60R18", "SEL, Titanium"]]},
+    "Mustang": {"2015-2023": [["235/55R17", "EcoBoost base"], ["235/50R18", "EcoBoost Premium"], ["255/40R19", "GT"]]}
+  },
+  "Honda": {
+    "Accord": {"2018-2022": [["225/50R17", "LX, EX"], ["235/40R19", "Sport, Touring"]]},
+    "Civic": {"2016-2021": [["215/55R16", "LX"], ["215/50R17", "EX, EX-L"], ["235/40R18", "Sport"]], "2022-2025": [["215/55R16", "LX"], ["235/40R18", "Sport, Touring"]]},
+    "CR-V": {"2017-2022": [["235/65R17", "LX"], ["235/60R18", "EX, EX-L, Touring"]]}
+  },
+  "Hyundai": {
+    "Accent": {"2018-2022": [["185/65R15", "Base"], ["205/45R17", "Sport"]]},
+    "Elantra": {"2017-2020": [["195/65R15", "Base"], ["205/55R16", "GL"], ["225/45R17", "Sport, Limited"]], "2021-2025": [["195/65R15", "SE"], ["205/55R16", "SEL"], ["225/45R17", "Limited"]]},
+    "Santa Fe": {"2019-2023": [["235/65R17", "Base"], ["235/60R18", "SEL"], ["235/55R19", "Limited"]]},
+    "Tucson": {"2016-2021": [["225/60R17", "Base"], ["225/55R18", "Limited"], ["245/45R19", "N Line"]], "2022-2025": [["235/65R17", "SE"], ["235/60R18", "SEL"], ["235/55R19", "Limited"]]}
+  },
+  "Jeep": {
+    "Grand Cherokee": {"2014-2021": [["245/70R17", "Laredo"], ["265/60R18", "Limited"], ["265/50R20", "Overland, Summit"]]},
+    "Wrangler": {"2018-2025": [["245/75R17", "Sport"], ["255/70R18", "Sahara"], ["285/70R17", "Rubicon"]]}
+  },
+  "Kia": {
+    "Cerato": {"2019-2024": [["195/65R15", "Base"], ["205/55R16", "EX"], ["225/40R18", "GT-Line"]]},
+    "Picanto": {"2017-2024": [["175/65R14", "Base"], ["185/55R15", "GT-Line"]]},
+    "Rio": {"2017-2023": [["185/65R15", "Base"], ["205/45R17", "GT-Line"]]},
+    "Sportage": {"2017-2022": [["225/60R17", "LX"], ["235/55R18", "EX"], ["245/45R19", "SX"]], "2023-2025": [["235/65R17", "LX"], ["235/60R18", "EX"], ["235/55R19", "GT-Line"]]}
+  },
+  "Mazda": {
+    "CX-5": {"2017-2025": [["225/65R17", "Sport"], ["225/55R19", "Touring, Grand Touring"]]},
+    "Mazda3": {"2019-2025": [["205/60R16", "Base"], ["215/45R18", "Select, Premium"]]}
+  },
+  "Mercedes-Benz": {
+    "C-Class": {"2015-2021": [["205/60R16", "C180, C200"], ["225/50R17", "Avantgarde"], ["225/45R18|245/40R18", "AMG Line"]]},
+    "E-Class": {"2017-2023": [["225/55R17", "E200"], ["245/45R18", "Avantgarde"], ["245/40R19|275/35R19", "AMG Line"]]}
+  },
+  "Mitsubishi": {
+    "Lancer": {"2008-2017": [["205/60R16", "GLX, GLS"], ["215/45R18", "Sport"]]},
+    "Outlander": {"2013-2021": [["215/70R16", "Base"], ["225/55R18", "GLS, Sport"]]},
+    "Pajero": {"2007-2021": [["265/70R16", "GLX"], ["265/65R17", "GLS"], ["265/60R18", "Exceed"]]}
+  },
+  "Nissan": {
+    "Altima": {"2019-2025": [["215/60R16", "S"], ["215/55R17", "SV"], ["235/40R19", "SR, Platinum"]]},
+    "Patrol": {"2010-2024": [["265/70R18", "LE, SE"], ["275/60R20", "Platinum"]]},
+    "Sentra": {"2020-2025": [["205/60R16", "S, SV"], ["215/45R18", "SR"]]},
+    "Sunny": {"2012-2019": [["185/65R15", "All trims"]]},
+    "X-Trail": {"2014-2021": [["225/65R17", "S, SV"], ["225/60R18", "SL"], ["225/55R19", "Platinum"]]}
+  },
+  "Peugeot": {
+    "3008": {"2017-2023": [["215/65R17", "Active"], ["225/55R18", "Allure, GT Line"]]}
+  },
+  "Renault": {
+    "Duster": {"2018-2024": [["215/65R16", "Base"], ["215/60R17", "Prestige"]]},
+    "Logan": {"2013-2020": [["185/65R15", "All trims"]]}
+  },
+  "Toyota": {
+    "Camry": {"2018-2024": [["205/65R16", "LE"], ["235/45R18", "SE, XLE"], ["235/40R19", "XSE"]]},
+    "Corolla": {"2014-2019": [["195/65R15", "Base, XLi"], ["205/55R16", "GLi, Sport"]], "2020-2025": [["195/65R15", "Base"], ["205/55R16", "XLi, GLi"], ["225/40R18", "Sport"]]},
+    "Hilux": {"2016-2025": [["265/65R17", "SR5"], ["265/60R18", "Adventure"]]},
+    "Land Cruiser": {"2008-2021": [["285/65R17", "GX"], ["285/60R18", "GXR, VXR"], ["285/50R20", "VXR, Grand Touring"]]},
+    "Prado": {"2010-2023": [["265/65R17", "TX, TXL"], ["265/60R18", "VX"], ["265/55R19", "Limited"]]},
+    "RAV4": {"2019-2025": [["225/65R17", "LE, XLE"], ["235/60R18", "Adventure"], ["235/55R19", "Limited"]]},
+    "Yaris": {"2014-2020": [["175/65R14", "Base"], ["185/60R15", "SE"]]}
+  },
+  "Volkswagen": {
+    "Golf": {"2013-2020": [["195/65R15", "Trendline"], ["205/55R16", "Comfortline"], ["225/45R17", "Highline"], ["225/40R18", "GTI"]]},
+    "Jetta": {"2019-2025": [["205/60R16", "S"], ["225/45R17", "SE, SEL"]]}
+  }
+};
+
+// Sizes we usually have used tires for. Shown in the Used Tires section.
+const USED_SIZES = ["205/55R16", "195/65R15", "185/65R15", "215/60R16", "225/45R17", "205/60R16", "175/65R14", "185/65R14", "195/55R15", "215/55R17", "225/50R17", "235/45R18", "225/65R17", "235/60R18", "205/65R16", "185/60R15", "265/65R17", "265/70R16", "245/70R16", "225/40R18", "195/60R15", "215/65R16"];
+
+// New tires catalog. Every tire here shows as "Available" on the site.
+// origin: the country the tire is made in. Shown as "Made in ...".
+// hidePrice: true shows "Contact for price" instead of the price.
+const INVENTORY = [
+  {"brand": "Kumho", "model": "Solus HS63", "size": "155/70R13", "type": "All-Season", "origin": "South Korea", "year": "2026", "price": 30},
+  {"brand": "CEAT", "model": "SecuraDrive", "size": "155/70R13", "type": "Summer", "origin": "India", "year": "2025–2026", "price": 30},
+  {"brand": "Dunlop", "model": "Enasave EC300+", "size": "155/70R13", "type": "Summer", "origin": "Japan", "year": "2025", "price": 35},
+  {"brand": "Apollo", "model": "Alnac 4G", "size": "155/70R13", "type": "Summer", "origin": "India", "year": "2025", "price": 25},
+  {"brand": "Kumho", "model": "Ecowing ES31", "size": "155/70R13", "type": "Summer", "origin": "China", "year": "2026", "price": 35},
+  {"brand": "Nexen", "model": "N'blue HD Plus", "size": "155/70R13", "type": "Summer", "origin": "South Korea", "year": "2026", "price": 35},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "155/80R13", "type": "All-Season", "origin": "Spain", "year": "2025", "price": 50},
+  {"brand": "Goodyear", "model": "Vector 4Seasons Gen-3", "size": "155/80R13", "type": "All-Season", "origin": "Poland", "year": "2025–2026", "price": 50},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "155/80R13", "type": "Summer", "origin": "Germany", "year": "2025", "price": 50},
+  {"brand": "Firestone", "model": "Roadhawk 2", "size": "155/80R13", "type": "Summer", "origin": "Spain", "year": "2026", "price": 35},
+  {"brand": "Sailun", "model": "Atrezzo Elite", "size": "165/65R13", "type": "Summer", "origin": "China", "year": "2026", "price": 30, "hidePrice": true},
+  {"brand": "Continental", "model": "AllSeasonContact 2", "size": "165/65R13", "type": "All-Season", "origin": "Czech Republic", "year": "2025–2026", "price": 55},
+  {"brand": "Hankook", "model": "Kinergy Eco 2", "size": "165/65R13", "type": "Summer", "origin": "Indonesia", "year": "2025", "price": 40},
+  {"brand": "CEAT", "model": "SecuraDrive", "size": "165/65R13", "type": "Summer", "origin": "India", "year": "2025", "price": 30},
+  {"brand": "Toyo", "model": "Proxes Comfort", "size": "165/70R13", "type": "Summer", "origin": "Malaysia", "year": "2025", "price": 45},
+  {"brand": "Hankook", "model": "Kinergy 4S2", "size": "165/70R13", "type": "All-Season", "origin": "South Korea", "year": "2025", "price": 40},
+  {"brand": "Sailun", "model": "Atrezzo Elite", "size": "165/70R13", "type": "Summer", "origin": "China", "year": "2025", "price": 30},
+  {"brand": "Yokohama", "model": "BluEarth-GT AE51", "size": "165/70R13", "type": "Summer", "origin": "Japan", "year": "2025", "price": 40},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "175/70R13", "type": "All-Season", "origin": "Spain", "year": "2026", "price": 60},
+  {"brand": "Dunlop", "model": "Enasave EC300+", "size": "175/70R13", "type": "Summer", "origin": "Japan", "year": "2025–2026", "price": 45},
+  {"brand": "MRF", "model": "ZLX", "size": "175/70R13", "type": "Summer", "origin": "India", "year": "2026", "price": 30},
+  {"brand": "Toyo", "model": "Proxes Comfort", "size": "175/70R13", "type": "Summer", "origin": "Malaysia", "year": "2026", "price": 45},
+  {"brand": "MRF", "model": "ZLX", "size": "165/60R14", "type": "Summer", "origin": "India", "year": "2026", "price": 40},
+  {"brand": "Nexen", "model": "N'blue HD Plus", "size": "165/60R14", "type": "Summer", "origin": "South Korea", "year": "2025–2026", "price": 45},
+  {"brand": "Pirelli", "model": "Cinturato P7", "size": "165/60R14", "type": "Summer", "origin": "Turkey", "year": "2026", "price": 70, "hidePrice": true},
+  {"brand": "Michelin", "model": "Primacy 4+", "size": "165/60R14", "type": "Summer", "origin": "France", "year": "2025–2026", "price": 70},
+  {"brand": "Goodyear", "model": "Vector 4Seasons Gen-3", "size": "165/60R14", "type": "All-Season", "origin": "Poland", "year": "2025", "price": 65},
+  {"brand": "Michelin", "model": "Primacy 4+", "size": "165/65R14", "type": "Summer", "origin": "France", "year": "2026", "price": 80},
+  {"brand": "Firestone", "model": "Roadhawk 2", "size": "165/65R14", "type": "Summer", "origin": "Spain", "year": "2025–2026", "price": 45},
+  {"brand": "Hankook", "model": "Ventus Prime 4", "size": "165/65R14", "type": "Summer", "origin": "South Korea", "year": "2026", "price": 55},
+  {"brand": "Dunlop", "model": "Enasave EC300+", "size": "165/65R14", "type": "Summer", "origin": "Japan", "year": "2025–2026", "price": 55},
+  {"brand": "Apollo", "model": "Alnac 4G", "size": "175/65R14", "type": "Summer", "origin": "India", "year": "2025–2026", "price": 40},
+  {"brand": "Linglong", "model": "Green-Max HP010", "size": "175/65R14", "type": "Summer", "origin": "China", "year": "2025", "price": 40},
+  {"brand": "Kumho", "model": "Solus HS63", "size": "175/65R14", "type": "All-Season", "origin": "South Korea", "year": "2026", "price": 55},
+  {"brand": "Goodyear", "model": "Vector 4Seasons Gen-3", "size": "175/65R14", "type": "All-Season", "origin": "Poland", "year": "2026", "price": 80},
+  {"brand": "Triangle", "model": "TE301", "size": "175/65R14", "type": "Summer", "origin": "China", "year": "2025", "price": 40},
+  {"brand": "Hankook", "model": "Kinergy 4S2", "size": "175/65R14", "type": "All-Season", "origin": "South Korea", "year": "2025", "price": 55},
+  {"brand": "Toyo", "model": "Proxes Comfort", "size": "175/65R14", "type": "Summer", "origin": "Malaysia", "year": "2025–2026", "price": 65},
+  {"brand": "Apollo", "model": "Alnac 4G", "size": "175/70R14", "type": "Summer", "origin": "India", "year": "2026", "price": 40},
+  {"brand": "Michelin", "model": "Primacy 4+", "size": "175/70R14", "type": "Summer", "origin": "France", "year": "2026", "price": 75},
+  {"brand": "Michelin", "model": "Energy XM2+", "size": "175/70R14", "type": "Summer", "origin": "Thailand", "year": "2026", "price": 70},
+  {"brand": "Continental", "model": "AllSeasonContact 2", "size": "175/70R14", "type": "All-Season", "origin": "Czech Republic", "year": "2026", "price": 85},
+  {"brand": "Nexen", "model": "N'blue HD Plus", "size": "185/60R14", "type": "Summer", "origin": "South Korea", "year": "2025", "price": 55},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "185/60R14", "type": "All-Season", "origin": "Spain", "year": "2025", "price": 85},
+  {"brand": "Michelin", "model": "Primacy 4+", "size": "185/60R14", "type": "Summer", "origin": "France", "year": "2025", "price": 85},
+  {"brand": "Toyo", "model": "Proxes Comfort", "size": "185/60R14", "type": "Summer", "origin": "Malaysia", "year": "2025", "price": 60},
+  {"brand": "Apollo", "model": "Alnac 4G", "size": "185/65R14", "type": "Summer", "origin": "India", "year": "2025", "price": 45},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "185/65R14", "type": "All-Season", "origin": "Spain", "year": "2026", "price": 90, "hidePrice": true},
+  {"brand": "MRF", "model": "ZLX", "size": "185/65R14", "type": "Summer", "origin": "India", "year": "2026", "price": 45},
+  {"brand": "Sailun", "model": "Atrezzo Elite", "size": "185/65R14", "type": "Summer", "origin": "China", "year": "2026", "price": 45, "hidePrice": true},
+  {"brand": "Bridgestone", "model": "Ecopia EP150", "size": "185/65R14", "type": "Summer", "origin": "Thailand", "year": "2025", "price": 75},
+  {"brand": "Hankook", "model": "Kinergy Eco 2", "size": "185/65R14", "type": "Summer", "origin": "Indonesia", "year": "2025", "price": 70},
+  {"brand": "Hankook", "model": "Ventus Prime 4", "size": "185/65R14", "type": "Summer", "origin": "South Korea", "year": "2026", "price": 70},
+  {"brand": "Dunlop", "model": "Enasave EC300+", "size": "185/70R14", "type": "Summer", "origin": "Japan", "year": "2025", "price": 65},
+  {"brand": "MRF", "model": "ZLX", "size": "185/70R14", "type": "Summer", "origin": "India", "year": "2025", "price": 45},
+  {"brand": "Kumho", "model": "Solus HS63", "size": "185/70R14", "type": "All-Season", "origin": "South Korea", "year": "2026", "price": 55},
+  {"brand": "Michelin", "model": "Energy XM2+", "size": "185/70R14", "type": "Summer", "origin": "Thailand", "year": "2026", "price": 80, "hidePrice": true},
+  {"brand": "Kumho", "model": "Ecowing ES31", "size": "185/70R14", "type": "Summer", "origin": "China", "year": "2025", "price": 50},
+  {"brand": "Triangle", "model": "TE301", "size": "185/70R14", "type": "Summer", "origin": "China", "year": "2025–2026", "price": 40},
+  {"brand": "Toyo", "model": "Proxes Comfort", "size": "175/65R15", "type": "Summer", "origin": "Malaysia", "year": "2026", "price": 75},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "175/65R15", "type": "Summer", "origin": "Germany", "year": "2026", "price": 100},
+  {"brand": "Hankook", "model": "Kinergy Eco 2", "size": "175/65R15", "type": "Summer", "origin": "Indonesia", "year": "2025–2026", "price": 80},
+  {"brand": "Hankook", "model": "Kinergy 4S2", "size": "175/65R15", "type": "All-Season", "origin": "South Korea", "year": "2026", "price": 75},
+  {"brand": "Triangle", "model": "TE301", "size": "175/65R15", "type": "Summer", "origin": "China", "year": "2025", "price": 55},
+  {"brand": "Continental", "model": "AllSeasonContact 2", "size": "175/65R15", "type": "All-Season", "origin": "Czech Republic", "year": "2025", "price": 100},
+  {"brand": "Continental", "model": "AllSeasonContact 2", "size": "185/55R15", "type": "All-Season", "origin": "Czech Republic", "year": "2026", "price": 100},
+  {"brand": "Goodyear", "model": "Vector 4Seasons Gen-3", "size": "185/55R15", "type": "All-Season", "origin": "Poland", "year": "2025–2026", "price": 100},
+  {"brand": "Yokohama", "model": "BluEarth-GT AE51", "size": "185/55R15", "type": "Summer", "origin": "Japan", "year": "2025", "price": 75},
+  {"brand": "Hankook", "model": "Kinergy 4S2", "size": "185/55R15", "type": "All-Season", "origin": "South Korea", "year": "2025", "price": 80},
+  {"brand": "Linglong", "model": "Green-Max HP010", "size": "185/55R15", "type": "Summer", "origin": "China", "year": "2025–2026", "price": 50},
+  {"brand": "Kumho", "model": "Ecowing ES31", "size": "185/55R15", "type": "Summer", "origin": "China", "year": "2026", "price": 60},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "185/60R15", "type": "Summer", "origin": "Germany", "year": "2025", "price": 100},
+  {"brand": "CEAT", "model": "SecuraDrive", "size": "185/60R15", "type": "Summer", "origin": "India", "year": "2025", "price": 60},
+  {"brand": "Bridgestone", "model": "Ecopia EP150", "size": "185/60R15", "type": "Summer", "origin": "Thailand", "year": "2026", "price": 105},
+  {"brand": "MRF", "model": "ZLX", "size": "185/60R15", "type": "Summer", "origin": "India", "year": "2025", "price": 55},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "185/60R15", "type": "All-Season", "origin": "Spain", "year": "2025", "price": 95},
+  {"brand": "Hankook", "model": "Ventus Prime 4", "size": "185/65R15", "type": "Summer", "origin": "South Korea", "year": "2026", "price": 85},
+  {"brand": "Kumho", "model": "Solus HS63", "size": "185/65R15", "type": "All-Season", "origin": "South Korea", "year": "2026", "price": 60},
+  {"brand": "Sailun", "model": "Atrezzo Elite", "size": "185/65R15", "type": "Summer", "origin": "China", "year": "2026", "price": 50},
+  {"brand": "Kumho", "model": "Ecowing ES31", "size": "185/65R15", "type": "Summer", "origin": "China", "year": "2025", "price": 65},
+  {"brand": "Apollo", "model": "Alnac 4G", "size": "185/65R15", "type": "Summer", "origin": "India", "year": "2025–2026", "price": 60},
+  {"brand": "Firestone", "model": "Roadhawk 2", "size": "185/65R15", "type": "Summer", "origin": "Spain", "year": "2026", "price": 65},
+  {"brand": "Goodyear", "model": "EfficientGrip Performance 2", "size": "185/65R15", "type": "Summer", "origin": "Germany", "year": "2025", "price": 105},
+  {"brand": "Goodyear", "model": "Vector 4Seasons Gen-3", "size": "195/55R15", "type": "All-Season", "origin": "Poland", "year": "2025", "price": 105},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "195/55R15", "type": "Summer", "origin": "Germany", "year": "2025", "price": 100},
+  {"brand": "Hankook", "model": "Kinergy 4S2", "size": "195/55R15", "type": "All-Season", "origin": "South Korea", "year": "2025", "price": 80},
+  {"brand": "Michelin", "model": "Energy XM2+", "size": "195/55R15", "type": "Summer", "origin": "Thailand", "year": "2026", "price": 100},
+  {"brand": "Toyo", "model": "Proxes Comfort", "size": "195/60R15", "type": "Summer", "origin": "Malaysia", "year": "2026", "price": 90},
+  {"brand": "Michelin", "model": "Primacy 4+", "size": "195/60R15", "type": "Summer", "origin": "France", "year": "2025", "price": 110},
+  {"brand": "Goodyear", "model": "Vector 4Seasons Gen-3", "size": "195/60R15", "type": "All-Season", "origin": "Poland", "year": "2026", "price": 95},
+  {"brand": "MRF", "model": "ZLX", "size": "195/60R15", "type": "Summer", "origin": "India", "year": "2025–2026", "price": 60},
+  {"brand": "Michelin", "model": "Energy XM2+", "size": "195/60R15", "type": "Summer", "origin": "Thailand", "year": "2026", "price": 105},
+  {"brand": "CEAT", "model": "SecuraDrive", "size": "195/65R15", "type": "Summer", "origin": "India", "year": "2026", "price": 55},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "195/65R15", "type": "Summer", "origin": "Germany", "year": "2025–2026", "price": 100},
+  {"brand": "Dunlop", "model": "Enasave EC300+", "size": "195/65R15", "type": "Summer", "origin": "Japan", "year": "2025–2026", "price": 80},
+  {"brand": "Kumho", "model": "Ecowing ES31", "size": "195/65R15", "type": "Summer", "origin": "China", "year": "2025–2026", "price": 70},
+  {"brand": "Kumho", "model": "Solus HS63", "size": "195/65R15", "type": "All-Season", "origin": "South Korea", "year": "2026", "price": 65},
+  {"brand": "Pirelli", "model": "Cinturato P7", "size": "195/65R15", "type": "Summer", "origin": "Turkey", "year": "2025", "price": 105, "hidePrice": true},
+  {"brand": "Triangle", "model": "TE301", "size": "195/65R15", "type": "Summer", "origin": "China", "year": "2025", "price": 55},
+  {"brand": "Toyo", "model": "Proxes Comfort", "size": "205/65R15", "type": "Summer", "origin": "Malaysia", "year": "2025", "price": 95},
+  {"brand": "Michelin", "model": "Energy XM2+", "size": "205/65R15", "type": "Summer", "origin": "Thailand", "year": "2026", "price": 105},
+  {"brand": "Sailun", "model": "Atrezzo Elite", "size": "205/65R15", "type": "Summer", "origin": "China", "year": "2026", "price": 60},
+  {"brand": "Goodyear", "model": "EfficientGrip Performance 2", "size": "205/65R15", "type": "Summer", "origin": "Germany", "year": "2026", "price": 110},
+  {"brand": "Firestone", "model": "Roadhawk 2", "size": "205/70R15", "type": "Summer", "origin": "Spain", "year": "2026", "price": 65, "hidePrice": true},
+  {"brand": "Michelin", "model": "Primacy 4+", "size": "205/70R15", "type": "Summer", "origin": "France", "year": "2025", "price": 105},
+  {"brand": "Continental", "model": "AllSeasonContact 2", "size": "205/70R15", "type": "All-Season", "origin": "Czech Republic", "year": "2025–2026", "price": 110},
+  {"brand": "Bridgestone", "model": "Ecopia EP150", "size": "205/70R15", "type": "Summer", "origin": "Thailand", "year": "2025–2026", "price": 100},
+  {"brand": "CEAT", "model": "SecuraDrive", "size": "205/70R15", "type": "Summer", "origin": "India", "year": "2025", "price": 65},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "205/70R15", "type": "All-Season", "origin": "Spain", "year": "2026", "price": 100},
+  {"brand": "Yokohama", "model": "Geolandar H/T G056", "size": "235/75R15", "type": "SUV Highway", "origin": "Philippines", "year": "2026", "price": 115},
+  {"brand": "Pirelli", "model": "Scorpion Verde", "size": "235/75R15", "type": "SUV Highway", "origin": "Romania", "year": "2025–2026", "price": 145},
+  {"brand": "Nexen", "model": "Roadian HTX2", "size": "235/75R15", "type": "SUV Highway", "origin": "South Korea", "year": "2025", "price": 100},
+  {"brand": "Apollo", "model": "Apterra HT2", "size": "235/75R15", "type": "SUV Highway", "origin": "India", "year": "2025", "price": 85},
+  {"brand": "Bridgestone", "model": "Turanza 6", "size": "195/55R16", "type": "Summer", "origin": "Japan", "year": "2025", "price": 115},
+  {"brand": "Bridgestone", "model": "Ecopia EP150", "size": "195/55R16", "type": "Summer", "origin": "Thailand", "year": "2026", "price": 120},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "195/55R16", "type": "Summer", "origin": "Germany", "year": "2026", "price": 120},
+  {"brand": "Apollo", "model": "Alnac 4G", "size": "195/55R16", "type": "Summer", "origin": "India", "year": "2025", "price": 60},
+  {"brand": "Hankook", "model": "Ventus Prime 4", "size": "195/60R16", "type": "Summer", "origin": "South Korea", "year": "2025", "price": 95},
+  {"brand": "Bridgestone", "model": "Turanza 6", "size": "195/60R16", "type": "Summer", "origin": "Japan", "year": "2026", "price": 130},
+  {"brand": "Sailun", "model": "Atrezzo Elite", "size": "195/60R16", "type": "Summer", "origin": "China", "year": "2025", "price": 60},
+  {"brand": "Kumho", "model": "Ecowing ES31", "size": "195/60R16", "type": "Summer", "origin": "China", "year": "2025–2026", "price": 85},
+  {"brand": "Linglong", "model": "Green-Max HP010", "size": "195/60R16", "type": "Summer", "origin": "China", "year": "2026", "price": 65},
+  {"brand": "Goodyear", "model": "EfficientGrip Performance 2", "size": "205/55R16", "type": "Summer", "origin": "Germany", "year": "2026", "price": 115},
+  {"brand": "Pirelli", "model": "Cinturato P7", "size": "205/55R16", "type": "Summer", "origin": "Turkey", "year": "2026", "price": 125},
+  {"brand": "Triangle", "model": "TE301", "size": "205/55R16", "type": "Summer", "origin": "China", "year": "2026", "price": 65},
+  {"brand": "Bridgestone", "model": "Turanza 6", "size": "205/55R16", "type": "Summer", "origin": "Japan", "year": "2025", "price": 135},
+  {"brand": "Nexen", "model": "N'blue HD Plus", "size": "205/55R16", "type": "Summer", "origin": "South Korea", "year": "2026", "price": 80},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "205/55R16", "type": "All-Season", "origin": "Spain", "year": "2026", "price": 130},
+  {"brand": "Bridgestone", "model": "Ecopia EP150", "size": "205/55R16", "type": "Summer", "origin": "Thailand", "year": "2025", "price": 120},
+  {"brand": "Sailun", "model": "Atrezzo Elite", "size": "205/60R16", "type": "Summer", "origin": "China", "year": "2025–2026", "price": 75},
+  {"brand": "Linglong", "model": "Green-Max HP010", "size": "205/60R16", "type": "Summer", "origin": "China", "year": "2025", "price": 65},
+  {"brand": "Hankook", "model": "Kinergy 4S2", "size": "205/60R16", "type": "All-Season", "origin": "South Korea", "year": "2026", "price": 105},
+  {"brand": "Nexen", "model": "N'blue HD Plus", "size": "205/60R16", "type": "Summer", "origin": "South Korea", "year": "2025", "price": 90},
+  {"brand": "Firestone", "model": "Roadhawk 2", "size": "205/60R16", "type": "Summer", "origin": "Spain", "year": "2026", "price": 90},
+  {"brand": "Goodyear", "model": "Vector 4Seasons Gen-3", "size": "205/60R16", "type": "All-Season", "origin": "Poland", "year": "2026", "price": 115},
+  {"brand": "Kumho", "model": "Ecowing ES31", "size": "205/60R16", "type": "Summer", "origin": "China", "year": "2026", "price": 75},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "205/65R16", "type": "Summer", "origin": "Germany", "year": "2025", "price": 120},
+  {"brand": "Continental", "model": "AllSeasonContact 2", "size": "205/65R16", "type": "All-Season", "origin": "Czech Republic", "year": "2026", "price": 125},
+  {"brand": "Triangle", "model": "TE301", "size": "205/65R16", "type": "Summer", "origin": "China", "year": "2026", "price": 70},
+  {"brand": "Pirelli", "model": "Cinturato P7", "size": "205/65R16", "type": "Summer", "origin": "Turkey", "year": "2026", "price": 140, "hidePrice": true},
+  {"brand": "Apollo", "model": "Alnac 4G", "size": "215/55R16", "type": "Summer", "origin": "India", "year": "2026", "price": 70},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "215/55R16", "type": "Summer", "origin": "Germany", "year": "2026", "price": 120},
+  {"brand": "Continental", "model": "AllSeasonContact 2", "size": "215/55R16", "type": "All-Season", "origin": "Czech Republic", "year": "2025", "price": 140},
+  {"brand": "Dunlop", "model": "Enasave EC300+", "size": "215/55R16", "type": "Summer", "origin": "Japan", "year": "2025–2026", "price": 105},
+  {"brand": "Bridgestone", "model": "Turanza 6", "size": "215/60R16", "type": "Summer", "origin": "Japan", "year": "2025", "price": 130},
+  {"brand": "Linglong", "model": "Green-Max HP010", "size": "215/60R16", "type": "Summer", "origin": "China", "year": "2026", "price": 70},
+  {"brand": "Dunlop", "model": "Enasave EC300+", "size": "215/60R16", "type": "Summer", "origin": "Japan", "year": "2026", "price": 105},
+  {"brand": "CEAT", "model": "SecuraDrive", "size": "215/60R16", "type": "Summer", "origin": "India", "year": "2026", "price": 80},
+  {"brand": "Michelin", "model": "Energy XM2+", "size": "215/60R16", "type": "Summer", "origin": "Thailand", "year": "2025–2026", "price": 130},
+  {"brand": "Kumho", "model": "Solus HS63", "size": "215/60R16", "type": "All-Season", "origin": "South Korea", "year": "2025–2026", "price": 85},
+  {"brand": "Firestone", "model": "Roadhawk 2", "size": "215/60R16", "type": "Summer", "origin": "Spain", "year": "2025–2026", "price": 95},
+  {"brand": "Michelin", "model": "Primacy 4+", "size": "215/65R16", "type": "Summer", "origin": "France", "year": "2026", "price": 130},
+  {"brand": "CEAT", "model": "SecuraDrive", "size": "215/65R16", "type": "Summer", "origin": "India", "year": "2025", "price": 80},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "215/65R16", "type": "Summer", "origin": "Germany", "year": "2025", "price": 135},
+  {"brand": "Nexen", "model": "N'blue HD Plus", "size": "215/65R16", "type": "Summer", "origin": "South Korea", "year": "2025", "price": 80},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "215/65R16", "type": "All-Season", "origin": "Spain", "year": "2026", "price": 135},
+  {"brand": "Michelin", "model": "Primacy SUV+", "size": "215/70R16", "type": "SUV Highway", "origin": "Spain", "year": "2026", "price": 165},
+  {"brand": "Yokohama", "model": "Geolandar H/T G056", "size": "215/70R16", "type": "SUV Highway", "origin": "Philippines", "year": "2025–2026", "price": 125},
+  {"brand": "Bridgestone", "model": "Dueler H/T 684 II", "size": "215/70R16", "type": "SUV Highway", "origin": "Thailand", "year": "2026", "price": 150},
+  {"brand": "Dunlop", "model": "Grandtrek PT3", "size": "215/70R16", "type": "SUV Highway", "origin": "Thailand", "year": "2025", "price": 115},
+  {"brand": "Dunlop", "model": "Enasave EC300+", "size": "225/60R16", "type": "Summer", "origin": "Japan", "year": "2025", "price": 110},
+  {"brand": "Bridgestone", "model": "Ecopia EP150", "size": "225/60R16", "type": "Summer", "origin": "Thailand", "year": "2025", "price": 145},
+  {"brand": "Triangle", "model": "TE301", "size": "225/60R16", "type": "Summer", "origin": "China", "year": "2026", "price": 80},
+  {"brand": "Yokohama", "model": "BluEarth-GT AE51", "size": "225/60R16", "type": "Summer", "origin": "Japan", "year": "2026", "price": 110},
+  {"brand": "Firestone", "model": "Roadhawk 2", "size": "225/60R16", "type": "Summer", "origin": "Spain", "year": "2025", "price": 95},
+  {"brand": "Goodyear", "model": "EfficientGrip 2 SUV", "size": "225/70R16", "type": "SUV Highway", "origin": "Poland", "year": "2025–2026", "price": 145},
+  {"brand": "Apollo", "model": "Apterra HT2", "size": "225/70R16", "type": "SUV Highway", "origin": "India", "year": "2026", "price": 80},
+  {"brand": "Kumho", "model": "Crugen HP71", "size": "225/70R16", "type": "SUV Highway", "origin": "South Korea", "year": "2026", "price": 110, "hidePrice": true},
+  {"brand": "Nexen", "model": "Roadian HTX2", "size": "225/70R16", "type": "SUV Highway", "origin": "South Korea", "year": "2025", "price": 90},
+  {"brand": "Triangle", "model": "TR259", "size": "225/70R16", "type": "SUV Highway", "origin": "China", "year": "2025", "price": 85},
+  {"brand": "Yokohama", "model": "Geolandar A/T G015", "size": "245/70R16", "type": "All-Terrain", "origin": "Japan", "year": "2025", "price": 130},
+  {"brand": "Michelin", "model": "CrossClimate 2 SUV", "size": "245/70R16", "type": "All-Season", "origin": "France", "year": "2025", "price": 160},
+  {"brand": "Bridgestone", "model": "Dueler A/T 002", "size": "245/70R16", "type": "All-Terrain", "origin": "Japan", "year": "2025", "price": 175},
+  {"brand": "General", "model": "Grabber AT3", "size": "245/70R16", "type": "All-Terrain", "origin": "USA", "year": "2025–2026", "price": 115},
+  {"brand": "Toyo", "model": "Open Country A/T III", "size": "245/70R16", "type": "All-Terrain", "origin": "Japan", "year": "2026", "price": 130},
+  {"brand": "Sailun", "model": "Terramax A/T", "size": "245/75R16", "type": "All-Terrain", "origin": "China", "year": "2025–2026", "price": 95},
+  {"brand": "Goodyear", "model": "Wrangler AT Adventure", "size": "245/75R16", "type": "All-Terrain", "origin": "USA", "year": "2026", "price": 165},
+  {"brand": "CEAT", "model": "CrossDrive AT", "size": "245/75R16", "type": "All-Terrain", "origin": "India", "year": "2025", "price": 90},
+  {"brand": "Goodyear", "model": "EfficientGrip 2 SUV", "size": "245/75R16", "type": "SUV Highway", "origin": "Poland", "year": "2025–2026", "price": 150},
+  {"brand": "Continental", "model": "CrossContact LX Sport", "size": "265/70R16", "type": "SUV Highway", "origin": "Portugal", "year": "2025–2026", "price": 160},
+  {"brand": "Nexen", "model": "Roadian ATX", "size": "265/70R16", "type": "All-Terrain", "origin": "South Korea", "year": "2025", "price": 110},
+  {"brand": "BFGoodrich", "model": "All-Terrain T/A KO3", "size": "265/70R16", "type": "All-Terrain", "origin": "USA", "year": "2025", "price": 145},
+  {"brand": "Falken", "model": "Wildpeak A/T3W", "size": "265/70R16", "type": "All-Terrain", "origin": "Thailand", "year": "2025", "price": 135},
+  {"brand": "Goodyear", "model": "Wrangler AT Adventure", "size": "265/70R16", "type": "All-Terrain", "origin": "USA", "year": "2025–2026", "price": 190},
+  {"brand": "Toyo", "model": "Open Country A/T III", "size": "265/70R16", "type": "All-Terrain", "origin": "Japan", "year": "2025", "price": 140},
+  {"brand": "Continental", "model": "CrossContact LX Sport", "size": "265/75R16", "type": "SUV Highway", "origin": "Portugal", "year": "2025–2026", "price": 165},
+  {"brand": "CEAT", "model": "CrossDrive AT", "size": "265/75R16", "type": "All-Terrain", "origin": "India", "year": "2025", "price": 85},
+  {"brand": "Kumho", "model": "Road Venture AT52", "size": "265/75R16", "type": "All-Terrain", "origin": "South Korea", "year": "2025–2026", "price": 115},
+  {"brand": "Hankook", "model": "Dynapro AT2 Xtreme", "size": "265/75R16", "type": "All-Terrain", "origin": "South Korea", "year": "2025–2026", "price": 135},
+  {"brand": "Sailun", "model": "Terramax A/T", "size": "265/75R16", "type": "All-Terrain", "origin": "China", "year": "2026", "price": 105},
+  {"brand": "Goodyear", "model": "Eagle F1 Asymmetric 6", "size": "205/45R17", "type": "Performance", "origin": "Germany", "year": "2025", "price": 150},
+  {"brand": "Apollo", "model": "Aspire 4G", "size": "205/45R17", "type": "Performance", "origin": "India", "year": "2026", "price": 85},
+  {"brand": "Kumho", "model": "Ecsta PS71", "size": "205/45R17", "type": "Performance", "origin": "South Korea", "year": "2026", "price": 95},
+  {"brand": "Linglong", "model": "Sport Master", "size": "205/45R17", "type": "Performance", "origin": "China", "year": "2025–2026", "price": 80},
+  {"brand": "Hankook", "model": "Kinergy Eco 2", "size": "205/50R17", "type": "Summer", "origin": "Indonesia", "year": "2026", "price": 105},
+  {"brand": "Michelin", "model": "Energy XM2+", "size": "205/50R17", "type": "Summer", "origin": "Thailand", "year": "2026", "price": 135},
+  {"brand": "Michelin", "model": "Primacy 4+", "size": "205/50R17", "type": "Summer", "origin": "France", "year": "2025–2026", "price": 140},
+  {"brand": "Linglong", "model": "Green-Max HP010", "size": "205/50R17", "type": "Summer", "origin": "China", "year": "2025", "price": 75},
+  {"brand": "Toyo", "model": "Proxes Comfort", "size": "205/55R17", "type": "Summer", "origin": "Malaysia", "year": "2025", "price": 120},
+  {"brand": "Kumho", "model": "Solus HS63", "size": "205/55R17", "type": "All-Season", "origin": "South Korea", "year": "2026", "price": 100},
+  {"brand": "MRF", "model": "ZLX", "size": "205/55R17", "type": "Summer", "origin": "India", "year": "2025", "price": 85},
+  {"brand": "Apollo", "model": "Alnac 4G", "size": "205/55R17", "type": "Summer", "origin": "India", "year": "2025", "price": 85},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "215/45R17", "type": "Summer", "origin": "Germany", "year": "2025", "price": 160},
+  {"brand": "Sailun", "model": "Atrezzo ZSR", "size": "215/45R17", "type": "Performance", "origin": "China", "year": "2026", "price": 85},
+  {"brand": "Michelin", "model": "Pilot Sport 5", "size": "215/45R17", "type": "Performance", "origin": "France", "year": "2026", "price": 165},
+  {"brand": "Linglong", "model": "Sport Master", "size": "215/45R17", "type": "Performance", "origin": "China", "year": "2026", "price": 85},
+  {"brand": "Toyo", "model": "Proxes Comfort", "size": "215/50R17", "type": "Summer", "origin": "Malaysia", "year": "2025", "price": 125},
+  {"brand": "Pirelli", "model": "Cinturato P7", "size": "215/50R17", "type": "Summer", "origin": "Turkey", "year": "2026", "price": 160},
+  {"brand": "Apollo", "model": "Alnac 4G", "size": "215/50R17", "type": "Summer", "origin": "India", "year": "2025", "price": 85},
+  {"brand": "Bridgestone", "model": "Turanza 6", "size": "215/50R17", "type": "Summer", "origin": "Japan", "year": "2025", "price": 145},
+  {"brand": "Goodyear", "model": "Vector 4Seasons Gen-3", "size": "215/55R17", "type": "All-Season", "origin": "Poland", "year": "2026", "price": 150},
+  {"brand": "Nexen", "model": "N'blue HD Plus", "size": "215/55R17", "type": "Summer", "origin": "South Korea", "year": "2026", "price": 105},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "215/55R17", "type": "Summer", "origin": "Germany", "year": "2025", "price": 155},
+  {"brand": "Firestone", "model": "Roadhawk 2", "size": "215/55R17", "type": "Summer", "origin": "Spain", "year": "2025–2026", "price": 100},
+  {"brand": "Sailun", "model": "Atrezzo Elite", "size": "215/55R17", "type": "Summer", "origin": "China", "year": "2026", "price": 90},
+  {"brand": "Dunlop", "model": "Grandtrek PT3", "size": "215/60R17", "type": "SUV Highway", "origin": "Thailand", "year": "2026", "price": 145},
+  {"brand": "Pirelli", "model": "Scorpion Verde", "size": "215/60R17", "type": "SUV Highway", "origin": "Romania", "year": "2026", "price": 185},
+  {"brand": "Hankook", "model": "Dynapro HP2", "size": "215/60R17", "type": "SUV Highway", "origin": "South Korea", "year": "2025", "price": 140},
+  {"brand": "Michelin", "model": "Primacy SUV+", "size": "215/60R17", "type": "SUV Highway", "origin": "Spain", "year": "2026", "price": 180},
+  {"brand": "Dunlop", "model": "Grandtrek PT3", "size": "215/65R17", "type": "SUV Highway", "origin": "Thailand", "year": "2026", "price": 130},
+  {"brand": "Sailun", "model": "Terramax CVR", "size": "215/65R17", "type": "SUV Highway", "origin": "China", "year": "2026", "price": 90},
+  {"brand": "Pirelli", "model": "Scorpion Verde", "size": "215/65R17", "type": "SUV Highway", "origin": "Romania", "year": "2025–2026", "price": 155},
+  {"brand": "Hankook", "model": "Dynapro HP2", "size": "215/65R17", "type": "SUV Highway", "origin": "South Korea", "year": "2025–2026", "price": 130},
+  {"brand": "Kumho", "model": "Crugen HP71", "size": "215/65R17", "type": "SUV Highway", "origin": "South Korea", "year": "2026", "price": 110},
+  {"brand": "Yokohama", "model": "Advan Sport V107", "size": "225/45R17", "type": "Performance", "origin": "Japan", "year": "2025–2026", "price": 125},
+  {"brand": "Pirelli", "model": "P Zero", "size": "225/45R17", "type": "Performance", "origin": "Italy", "year": "2026", "price": 155},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "225/45R17", "type": "Summer", "origin": "Germany", "year": "2025–2026", "price": 180},
+  {"brand": "Bridgestone", "model": "Potenza Sport", "size": "225/45R17", "type": "Performance", "origin": "Japan", "year": "2026", "price": 165},
+  {"brand": "Hankook", "model": "Ventus S1 evo3", "size": "225/45R17", "type": "Performance", "origin": "South Korea", "year": "2025", "price": 140},
+  {"brand": "Michelin", "model": "Primacy 4+", "size": "225/45R17", "type": "Summer", "origin": "France", "year": "2025", "price": 170},
+  {"brand": "Kumho", "model": "Ecsta PS71", "size": "225/45R17", "type": "Performance", "origin": "South Korea", "year": "2026", "price": 120},
+  {"brand": "Pirelli", "model": "Cinturato P7", "size": "225/50R17", "type": "Summer", "origin": "Turkey", "year": "2025", "price": 150},
+  {"brand": "Hankook", "model": "Kinergy 4S2", "size": "225/50R17", "type": "All-Season", "origin": "South Korea", "year": "2025", "price": 125},
+  {"brand": "Michelin", "model": "Energy XM2+", "size": "225/50R17", "type": "Summer", "origin": "Thailand", "year": "2025", "price": 160, "hidePrice": true},
+  {"brand": "Kumho", "model": "Solus HS63", "size": "225/50R17", "type": "All-Season", "origin": "South Korea", "year": "2026", "price": 105},
+  {"brand": "Dunlop", "model": "Enasave EC300+", "size": "225/50R17", "type": "Summer", "origin": "Japan", "year": "2025", "price": 125},
+  {"brand": "MRF", "model": "ZLX", "size": "225/55R17", "type": "Summer", "origin": "India", "year": "2026", "price": 80},
+  {"brand": "Apollo", "model": "Alnac 4G", "size": "225/55R17", "type": "Summer", "origin": "India", "year": "2025–2026", "price": 90},
+  {"brand": "Goodyear", "model": "Vector 4Seasons Gen-3", "size": "225/55R17", "type": "All-Season", "origin": "Poland", "year": "2026", "price": 155},
+  {"brand": "Firestone", "model": "Roadhawk 2", "size": "225/55R17", "type": "Summer", "origin": "Spain", "year": "2026", "price": 95},
+  {"brand": "Goodyear", "model": "EfficientGrip 2 SUV", "size": "225/60R17", "type": "SUV Highway", "origin": "Poland", "year": "2026", "price": 185},
+  {"brand": "Apollo", "model": "Apterra HT2", "size": "225/60R17", "type": "SUV Highway", "origin": "India", "year": "2026", "price": 95},
+  {"brand": "Kumho", "model": "Crugen HP71", "size": "225/60R17", "type": "SUV Highway", "origin": "South Korea", "year": "2026", "price": 105},
+  {"brand": "Dunlop", "model": "Grandtrek PT3", "size": "225/60R17", "type": "SUV Highway", "origin": "Thailand", "year": "2026", "price": 140},
+  {"brand": "Michelin", "model": "CrossClimate 2 SUV", "size": "225/60R17", "type": "All-Season", "origin": "France", "year": "2026", "price": 155},
+  {"brand": "Hankook", "model": "Dynapro HP2", "size": "225/65R17", "type": "SUV Highway", "origin": "South Korea", "year": "2026", "price": 140},
+  {"brand": "Sailun", "model": "Terramax CVR", "size": "225/65R17", "type": "SUV Highway", "origin": "China", "year": "2026", "price": 95},
+  {"brand": "Bridgestone", "model": "Dueler H/T 684 II", "size": "225/65R17", "type": "SUV Highway", "origin": "Thailand", "year": "2025–2026", "price": 155},
+  {"brand": "Michelin", "model": "CrossClimate 2 SUV", "size": "225/65R17", "type": "All-Season", "origin": "France", "year": "2025", "price": 190},
+  {"brand": "Apollo", "model": "Apterra HT2", "size": "225/65R17", "type": "SUV Highway", "origin": "India", "year": "2025–2026", "price": 95},
+  {"brand": "Yokohama", "model": "Geolandar H/T G056", "size": "225/65R17", "type": "SUV Highway", "origin": "Philippines", "year": "2026", "price": 135},
+  {"brand": "Hankook", "model": "Ventus Prime 4", "size": "235/45R17", "type": "Summer", "origin": "South Korea", "year": "2025", "price": 145},
+  {"brand": "Linglong", "model": "Sport Master", "size": "235/45R17", "type": "Performance", "origin": "China", "year": "2025–2026", "price": 100},
+  {"brand": "Yokohama", "model": "Advan Sport V107", "size": "235/45R17", "type": "Performance", "origin": "Japan", "year": "2025–2026", "price": 150},
+  {"brand": "Toyo", "model": "Proxes Sport 2", "size": "235/45R17", "type": "Performance", "origin": "Japan", "year": "2025", "price": 140},
+  {"brand": "Kumho", "model": "Ecowing ES31", "size": "235/55R17", "type": "Summer", "origin": "China", "year": "2025", "price": 110},
+  {"brand": "Sailun", "model": "Atrezzo Elite", "size": "235/55R17", "type": "Summer", "origin": "China", "year": "2025", "price": 80},
+  {"brand": "Goodyear", "model": "Vector 4Seasons Gen-3", "size": "235/55R17", "type": "All-Season", "origin": "Poland", "year": "2026", "price": 165},
+  {"brand": "Nexen", "model": "N'blue HD Plus", "size": "235/55R17", "type": "Summer", "origin": "South Korea", "year": "2025", "price": 100},
+  {"brand": "Triangle", "model": "TR259", "size": "235/65R17", "type": "SUV Highway", "origin": "China", "year": "2025–2026", "price": 90},
+  {"brand": "Continental", "model": "CrossContact LX Sport", "size": "235/65R17", "type": "SUV Highway", "origin": "Portugal", "year": "2026", "price": 190},
+  {"brand": "Pirelli", "model": "Scorpion Verde", "size": "235/65R17", "type": "SUV Highway", "origin": "Romania", "year": "2025", "price": 180},
+  {"brand": "Kumho", "model": "Crugen HP71", "size": "235/65R17", "type": "SUV Highway", "origin": "South Korea", "year": "2025", "price": 110},
+  {"brand": "Yokohama", "model": "Geolandar H/T G056", "size": "235/65R17", "type": "SUV Highway", "origin": "Philippines", "year": "2026", "price": 150},
+  {"brand": "Nexen", "model": "Roadian HTX2", "size": "235/65R17", "type": "SUV Highway", "origin": "South Korea", "year": "2026", "price": 110},
+  {"brand": "Apollo", "model": "Aspire 4G", "size": "245/45R17", "type": "Performance", "origin": "India", "year": "2026", "price": 95},
+  {"brand": "Bridgestone", "model": "Potenza Sport", "size": "245/45R17", "type": "Performance", "origin": "Japan", "year": "2026", "price": 180},
+  {"brand": "Linglong", "model": "Sport Master", "size": "245/45R17", "type": "Performance", "origin": "China", "year": "2025", "price": 90},
+  {"brand": "Goodyear", "model": "Eagle F1 Asymmetric 6", "size": "245/45R17", "type": "Performance", "origin": "Germany", "year": "2025", "price": 165},
+  {"brand": "Bridgestone", "model": "Dueler A/T 002", "size": "245/65R17", "type": "All-Terrain", "origin": "Japan", "year": "2025", "price": 165},
+  {"brand": "CEAT", "model": "CrossDrive AT", "size": "245/65R17", "type": "All-Terrain", "origin": "India", "year": "2026", "price": 100},
+  {"brand": "Goodyear", "model": "Wrangler AT Adventure", "size": "245/65R17", "type": "All-Terrain", "origin": "USA", "year": "2025", "price": 180},
+  {"brand": "Pirelli", "model": "Scorpion Verde", "size": "245/65R17", "type": "SUV Highway", "origin": "Romania", "year": "2025–2026", "price": 195},
+  {"brand": "Toyo", "model": "Open Country A/T III", "size": "245/65R17", "type": "All-Terrain", "origin": "Japan", "year": "2026", "price": 155},
+  {"brand": "Nexen", "model": "Roadian ATX", "size": "245/65R17", "type": "All-Terrain", "origin": "South Korea", "year": "2026", "price": 130},
+  {"brand": "Bridgestone", "model": "Dueler H/T 684 II", "size": "245/70R17", "type": "SUV Highway", "origin": "Thailand", "year": "2025–2026", "price": 185},
+  {"brand": "Toyo", "model": "Open Country A/T III", "size": "245/70R17", "type": "All-Terrain", "origin": "Japan", "year": "2025", "price": 140},
+  {"brand": "Goodyear", "model": "EfficientGrip 2 SUV", "size": "245/70R17", "type": "SUV Highway", "origin": "Poland", "year": "2025–2026", "price": 195},
+  {"brand": "Continental", "model": "CrossContact LX Sport", "size": "245/70R17", "type": "SUV Highway", "origin": "Portugal", "year": "2025–2026", "price": 175},
+  {"brand": "General", "model": "Grabber AT3", "size": "245/70R17", "type": "All-Terrain", "origin": "USA", "year": "2025–2026", "price": 130},
+  {"brand": "Bridgestone", "model": "Dueler A/T 002", "size": "245/70R17", "type": "All-Terrain", "origin": "Japan", "year": "2026", "price": 175},
+  {"brand": "Pirelli", "model": "Scorpion Verde", "size": "245/75R17", "type": "SUV Highway", "origin": "Romania", "year": "2025", "price": 190},
+  {"brand": "Toyo", "model": "Open Country A/T III", "size": "245/75R17", "type": "All-Terrain", "origin": "Japan", "year": "2025", "price": 160},
+  {"brand": "Kumho", "model": "Road Venture AT52", "size": "245/75R17", "type": "All-Terrain", "origin": "South Korea", "year": "2025", "price": 130},
+  {"brand": "General", "model": "Grabber AT3", "size": "245/75R17", "type": "All-Terrain", "origin": "USA", "year": "2026", "price": 115},
+  {"brand": "Yokohama", "model": "Geolandar A/T G015", "size": "265/65R17", "type": "All-Terrain", "origin": "Japan", "year": "2025–2026", "price": 155},
+  {"brand": "Toyo", "model": "Open Country A/T III", "size": "265/65R17", "type": "All-Terrain", "origin": "Japan", "year": "2025", "price": 145},
+  {"brand": "Goodyear", "model": "Wrangler AT Adventure", "size": "265/65R17", "type": "All-Terrain", "origin": "USA", "year": "2025", "price": 180},
+  {"brand": "Falken", "model": "Wildpeak A/T3W", "size": "265/65R17", "type": "All-Terrain", "origin": "Thailand", "year": "2026", "price": 165},
+  {"brand": "Kumho", "model": "Road Venture AT52", "size": "265/70R17", "type": "All-Terrain", "origin": "South Korea", "year": "2025", "price": 120},
+  {"brand": "Falken", "model": "Wildpeak A/T3W", "size": "265/70R17", "type": "All-Terrain", "origin": "Thailand", "year": "2026", "price": 165},
+  {"brand": "Nexen", "model": "Roadian ATX", "size": "265/70R17", "type": "All-Terrain", "origin": "South Korea", "year": "2025", "price": 120},
+  {"brand": "BFGoodrich", "model": "All-Terrain T/A KO3", "size": "265/70R17", "type": "All-Terrain", "origin": "USA", "year": "2025", "price": 165, "hidePrice": true},
+  {"brand": "Michelin", "model": "CrossClimate 2 SUV", "size": "265/70R17", "type": "All-Season", "origin": "France", "year": "2025–2026", "price": 180},
+  {"brand": "Falken", "model": "Wildpeak A/T3W", "size": "285/65R17", "type": "All-Terrain", "origin": "Thailand", "year": "2025", "price": 175},
+  {"brand": "Toyo", "model": "Open Country A/T III", "size": "285/65R17", "type": "All-Terrain", "origin": "Japan", "year": "2026", "price": 170},
+  {"brand": "Nexen", "model": "Roadian ATX", "size": "285/65R17", "type": "All-Terrain", "origin": "South Korea", "year": "2026", "price": 130},
+  {"brand": "Sailun", "model": "Terramax A/T", "size": "285/65R17", "type": "All-Terrain", "origin": "China", "year": "2025", "price": 105},
+  {"brand": "Bridgestone", "model": "Dueler A/T 002", "size": "285/70R17", "type": "All-Terrain", "origin": "Japan", "year": "2025", "price": 215},
+  {"brand": "Kumho", "model": "Road Venture AT52", "size": "285/70R17", "type": "All-Terrain", "origin": "South Korea", "year": "2025", "price": 135},
+  {"brand": "Nexen", "model": "Roadian ATX", "size": "285/70R17", "type": "All-Terrain", "origin": "South Korea", "year": "2025", "price": 145},
+  {"brand": "Michelin", "model": "Primacy SUV+", "size": "285/70R17", "type": "SUV Highway", "origin": "Spain", "year": "2026", "price": 195},
+  {"brand": "Goodyear", "model": "Wrangler AT Adventure", "size": "285/70R17", "type": "All-Terrain", "origin": "USA", "year": "2025", "price": 200},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "215/45R18", "type": "Summer", "origin": "Germany", "year": "2025–2026", "price": 170},
+  {"brand": "Bridgestone", "model": "Potenza Sport", "size": "215/45R18", "type": "Performance", "origin": "Japan", "year": "2025–2026", "price": 165},
+  {"brand": "Michelin", "model": "Pilot Sport 5", "size": "215/45R18", "type": "Performance", "origin": "France", "year": "2026", "price": 170},
+  {"brand": "Kumho", "model": "Ecsta PS71", "size": "215/45R18", "type": "Performance", "origin": "South Korea", "year": "2025–2026", "price": 105},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "215/55R18", "type": "All-Season", "origin": "Spain", "year": "2025–2026", "price": 165},
+  {"brand": "Firestone", "model": "Roadhawk 2", "size": "215/55R18", "type": "Summer", "origin": "Spain", "year": "2026", "price": 100},
+  {"brand": "Dunlop", "model": "Enasave EC300+", "size": "215/55R18", "type": "Summer", "origin": "Japan", "year": "2025", "price": 130},
+  {"brand": "CEAT", "model": "SecuraDrive", "size": "215/55R18", "type": "Summer", "origin": "India", "year": "2025", "price": 90},
+  {"brand": "Hankook", "model": "Ventus S1 evo3", "size": "225/40R18", "type": "Performance", "origin": "South Korea", "year": "2026", "price": 150},
+  {"brand": "Continental", "model": "SportContact 7", "size": "225/40R18", "type": "Performance", "origin": "Germany", "year": "2026", "price": 175},
+  {"brand": "Triangle", "model": "Sportex TH201", "size": "225/40R18", "type": "Performance", "origin": "China", "year": "2025–2026", "price": 105},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "225/40R18", "type": "Summer", "origin": "Germany", "year": "2026", "price": 185},
+  {"brand": "Hankook", "model": "Ventus S1 evo3", "size": "225/45R18", "type": "Performance", "origin": "South Korea", "year": "2026", "price": 155},
+  {"brand": "Nexen", "model": "N'Fera Sport", "size": "225/45R18", "type": "Performance", "origin": "South Korea", "year": "2025", "price": 130, "hidePrice": true},
+  {"brand": "Pirelli", "model": "P Zero", "size": "225/45R18", "type": "Performance", "origin": "Italy", "year": "2025", "price": 200},
+  {"brand": "Kumho", "model": "Ecsta PS71", "size": "225/45R18", "type": "Performance", "origin": "South Korea", "year": "2025–2026", "price": 125},
+  {"brand": "Michelin", "model": "Pilot Sport 5", "size": "225/45R18", "type": "Performance", "origin": "France", "year": "2025–2026", "price": 170},
+  {"brand": "Apollo", "model": "Aspire 4G", "size": "225/45R18", "type": "Performance", "origin": "India", "year": "2025", "price": 105},
+  {"brand": "CEAT", "model": "SecuraDrive", "size": "225/55R18", "type": "Summer", "origin": "India", "year": "2025–2026", "price": 90},
+  {"brand": "Nexen", "model": "N'blue HD Plus", "size": "225/55R18", "type": "Summer", "origin": "South Korea", "year": "2026", "price": 115},
+  {"brand": "Toyo", "model": "Proxes Comfort", "size": "225/55R18", "type": "Summer", "origin": "Malaysia", "year": "2025–2026", "price": 145},
+  {"brand": "Michelin", "model": "Energy XM2+", "size": "225/55R18", "type": "Summer", "origin": "Thailand", "year": "2026", "price": 170},
+  {"brand": "Linglong", "model": "Green-Max HP010", "size": "225/55R18", "type": "Summer", "origin": "China", "year": "2025", "price": 85},
+  {"brand": "Continental", "model": "CrossContact LX Sport", "size": "225/60R18", "type": "SUV Highway", "origin": "Portugal", "year": "2025", "price": 170},
+  {"brand": "Triangle", "model": "TR259", "size": "225/60R18", "type": "SUV Highway", "origin": "China", "year": "2025–2026", "price": 95},
+  {"brand": "Dunlop", "model": "Grandtrek PT3", "size": "225/60R18", "type": "SUV Highway", "origin": "Thailand", "year": "2025", "price": 150},
+  {"brand": "Yokohama", "model": "Geolandar H/T G056", "size": "225/60R18", "type": "SUV Highway", "origin": "Philippines", "year": "2025", "price": 155},
+  {"brand": "Kumho", "model": "Ecsta PS71", "size": "235/40R18", "type": "Performance", "origin": "South Korea", "year": "2026", "price": 125},
+  {"brand": "Toyo", "model": "Proxes Sport 2", "size": "235/40R18", "type": "Performance", "origin": "Japan", "year": "2026", "price": 145},
+  {"brand": "Continental", "model": "SportContact 7", "size": "235/40R18", "type": "Performance", "origin": "Germany", "year": "2025–2026", "price": 180},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "235/40R18", "type": "Summer", "origin": "Germany", "year": "2025–2026", "price": 195},
+  {"brand": "Hankook", "model": "Ventus S1 evo3", "size": "235/45R18", "type": "Performance", "origin": "South Korea", "year": "2026", "price": 145},
+  {"brand": "Apollo", "model": "Aspire 4G", "size": "235/45R18", "type": "Performance", "origin": "India", "year": "2026", "price": 100},
+  {"brand": "Linglong", "model": "Sport Master", "size": "235/45R18", "type": "Performance", "origin": "China", "year": "2025–2026", "price": 110},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "235/45R18", "type": "Summer", "origin": "Germany", "year": "2026", "price": 180},
+  {"brand": "Triangle", "model": "Sportex TH201", "size": "235/45R18", "type": "Performance", "origin": "China", "year": "2025", "price": 105},
+  {"brand": "Toyo", "model": "Proxes Comfort", "size": "235/50R18", "type": "Summer", "origin": "Malaysia", "year": "2026", "price": 130},
+  {"brand": "Goodyear", "model": "Vector 4Seasons Gen-3", "size": "235/50R18", "type": "All-Season", "origin": "Poland", "year": "2025", "price": 190},
+  {"brand": "Kumho", "model": "Solus HS63", "size": "235/50R18", "type": "All-Season", "origin": "South Korea", "year": "2025–2026", "price": 110},
+  {"brand": "Hankook", "model": "Kinergy 4S2", "size": "235/50R18", "type": "All-Season", "origin": "South Korea", "year": "2026", "price": 145},
+  {"brand": "Continental", "model": "AllSeasonContact 2", "size": "235/55R18", "type": "All-Season", "origin": "Czech Republic", "year": "2026", "price": 185},
+  {"brand": "Bridgestone", "model": "Turanza 6", "size": "235/55R18", "type": "Summer", "origin": "Japan", "year": "2026", "price": 185},
+  {"brand": "Hankook", "model": "Ventus Prime 4", "size": "235/55R18", "type": "Summer", "origin": "South Korea", "year": "2025", "price": 130},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "235/55R18", "type": "All-Season", "origin": "Spain", "year": "2026", "price": 175},
+  {"brand": "Michelin", "model": "CrossClimate 2 SUV", "size": "235/60R18", "type": "All-Season", "origin": "France", "year": "2026", "price": 200},
+  {"brand": "Goodyear", "model": "EfficientGrip 2 SUV", "size": "235/60R18", "type": "SUV Highway", "origin": "Poland", "year": "2026", "price": 180},
+  {"brand": "Yokohama", "model": "Geolandar H/T G056", "size": "235/60R18", "type": "SUV Highway", "origin": "Philippines", "year": "2025", "price": 145},
+  {"brand": "Nexen", "model": "Roadian HTX2", "size": "235/60R18", "type": "SUV Highway", "origin": "South Korea", "year": "2026", "price": 130},
+  {"brand": "Michelin", "model": "Primacy SUV+", "size": "235/60R18", "type": "SUV Highway", "origin": "Spain", "year": "2025–2026", "price": 185},
+  {"brand": "Sailun", "model": "Terramax CVR", "size": "235/60R18", "type": "SUV Highway", "origin": "China", "year": "2026", "price": 100},
+  {"brand": "Yokohama", "model": "Geolandar H/T G056", "size": "235/65R18", "type": "SUV Highway", "origin": "Philippines", "year": "2026", "price": 155},
+  {"brand": "Triangle", "model": "TR259", "size": "235/65R18", "type": "SUV Highway", "origin": "China", "year": "2025", "price": 105},
+  {"brand": "Dunlop", "model": "Grandtrek PT3", "size": "235/65R18", "type": "SUV Highway", "origin": "Thailand", "year": "2026", "price": 145},
+  {"brand": "Hankook", "model": "Dynapro HP2", "size": "235/65R18", "type": "SUV Highway", "origin": "South Korea", "year": "2026", "price": 160},
+  {"brand": "Continental", "model": "CrossContact LX Sport", "size": "235/65R18", "type": "SUV Highway", "origin": "Portugal", "year": "2025", "price": 200},
+  {"brand": "Hankook", "model": "Ventus Prime 4", "size": "245/40R18", "type": "Summer", "origin": "South Korea", "year": "2025", "price": 145},
+  {"brand": "Sailun", "model": "Atrezzo ZSR", "size": "245/40R18", "type": "Performance", "origin": "China", "year": "2025", "price": 115},
+  {"brand": "Continental", "model": "SportContact 7", "size": "245/40R18", "type": "Performance", "origin": "Germany", "year": "2026", "price": 175},
+  {"brand": "Linglong", "model": "Sport Master", "size": "245/40R18", "type": "Performance", "origin": "China", "year": "2025", "price": 100},
+  {"brand": "Hankook", "model": "Ventus S1 evo3", "size": "245/45R18", "type": "Performance", "origin": "South Korea", "year": "2026", "price": 150},
+  {"brand": "Linglong", "model": "Sport Master", "size": "245/45R18", "type": "Performance", "origin": "China", "year": "2025–2026", "price": 100},
+  {"brand": "Yokohama", "model": "Advan Sport V107", "size": "245/45R18", "type": "Performance", "origin": "Japan", "year": "2026", "price": 165},
+  {"brand": "Falken", "model": "Azenis FK520", "size": "245/45R18", "type": "Performance", "origin": "Japan", "year": "2025", "price": 160},
+  {"brand": "Linglong", "model": "Sport Master", "size": "255/35R18", "type": "Performance", "origin": "China", "year": "2025", "price": 120},
+  {"brand": "Continental", "model": "SportContact 7", "size": "255/35R18", "type": "Performance", "origin": "Germany", "year": "2026", "price": 200},
+  {"brand": "Sailun", "model": "Atrezzo ZSR", "size": "255/35R18", "type": "Performance", "origin": "China", "year": "2026", "price": 115},
+  {"brand": "Apollo", "model": "Aspire 4G", "size": "255/35R18", "type": "Performance", "origin": "India", "year": "2025", "price": 100},
+  {"brand": "Kumho", "model": "Ecsta PS71", "size": "255/40R18", "type": "Performance", "origin": "South Korea", "year": "2026", "price": 135},
+  {"brand": "Toyo", "model": "Proxes Sport 2", "size": "255/40R18", "type": "Performance", "origin": "Japan", "year": "2025", "price": 145},
+  {"brand": "Hankook", "model": "Ventus S1 evo3", "size": "255/40R18", "type": "Performance", "origin": "South Korea", "year": "2026", "price": 170},
+  {"brand": "Nexen", "model": "N'Fera Sport", "size": "255/40R18", "type": "Performance", "origin": "South Korea", "year": "2025–2026", "price": 130},
+  {"brand": "Falken", "model": "Azenis FK520", "size": "255/40R18", "type": "Performance", "origin": "Japan", "year": "2025", "price": 150},
+  {"brand": "Hankook", "model": "Kinergy 4S2", "size": "255/55R18", "type": "All-Season", "origin": "South Korea", "year": "2025", "price": 145},
+  {"brand": "MRF", "model": "ZLX", "size": "255/55R18", "type": "Summer", "origin": "India", "year": "2025", "price": 95},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "255/55R18", "type": "All-Season", "origin": "Spain", "year": "2026", "price": 180},
+  {"brand": "Bridgestone", "model": "Ecopia EP150", "size": "255/55R18", "type": "Summer", "origin": "Thailand", "year": "2025–2026", "price": 170},
+  {"brand": "Triangle", "model": "TE301", "size": "255/55R18", "type": "Summer", "origin": "China", "year": "2026", "price": 95},
+  {"brand": "Kumho", "model": "Ecowing ES31", "size": "255/55R18", "type": "Summer", "origin": "China", "year": "2025–2026", "price": 115},
+  {"brand": "General", "model": "Grabber AT3", "size": "255/70R18", "type": "All-Terrain", "origin": "USA", "year": "2025", "price": 145},
+  {"brand": "Sailun", "model": "Terramax A/T", "size": "255/70R18", "type": "All-Terrain", "origin": "China", "year": "2026", "price": 115},
+  {"brand": "Toyo", "model": "Open Country A/T III", "size": "255/70R18", "type": "All-Terrain", "origin": "Japan", "year": "2026", "price": 155},
+  {"brand": "Continental", "model": "CrossContact LX Sport", "size": "255/70R18", "type": "SUV Highway", "origin": "Portugal", "year": "2026", "price": 215},
+  {"brand": "BFGoodrich", "model": "All-Terrain T/A KO3", "size": "255/70R18", "type": "All-Terrain", "origin": "USA", "year": "2026", "price": 155},
+  {"brand": "Pirelli", "model": "Scorpion Verde", "size": "265/60R18", "type": "SUV Highway", "origin": "Romania", "year": "2025–2026", "price": 220},
+  {"brand": "Nexen", "model": "Roadian HTX2", "size": "265/60R18", "type": "SUV Highway", "origin": "South Korea", "year": "2025", "price": 145},
+  {"brand": "Apollo", "model": "Apterra HT2", "size": "265/60R18", "type": "SUV Highway", "origin": "India", "year": "2025", "price": 105},
+  {"brand": "Michelin", "model": "CrossClimate 2 SUV", "size": "265/60R18", "type": "All-Season", "origin": "France", "year": "2026", "price": 190},
+  {"brand": "Sailun", "model": "Terramax CVR", "size": "265/60R18", "type": "SUV Highway", "origin": "China", "year": "2026", "price": 125},
+  {"brand": "Continental", "model": "CrossContact LX Sport", "size": "265/60R18", "type": "SUV Highway", "origin": "Portugal", "year": "2025", "price": 205},
+  {"brand": "General", "model": "Grabber AT3", "size": "265/65R18", "type": "All-Terrain", "origin": "USA", "year": "2026", "price": 135},
+  {"brand": "Michelin", "model": "CrossClimate 2 SUV", "size": "265/65R18", "type": "All-Season", "origin": "France", "year": "2025–2026", "price": 225},
+  {"brand": "Sailun", "model": "Terramax A/T", "size": "265/65R18", "type": "All-Terrain", "origin": "China", "year": "2026", "price": 120},
+  {"brand": "Pirelli", "model": "Scorpion Verde", "size": "265/65R18", "type": "SUV Highway", "origin": "Romania", "year": "2025", "price": 225},
+  {"brand": "CEAT", "model": "CrossDrive AT", "size": "265/65R18", "type": "All-Terrain", "origin": "India", "year": "2026", "price": 120},
+  {"brand": "Bridgestone", "model": "Dueler A/T 002", "size": "265/65R18", "type": "All-Terrain", "origin": "Japan", "year": "2026", "price": 230},
+  {"brand": "General", "model": "Grabber AT3", "size": "265/70R18", "type": "All-Terrain", "origin": "USA", "year": "2026", "price": 135},
+  {"brand": "Michelin", "model": "CrossClimate 2 SUV", "size": "265/70R18", "type": "All-Season", "origin": "France", "year": "2026", "price": 190},
+  {"brand": "Bridgestone", "model": "Dueler H/T 684 II", "size": "265/70R18", "type": "SUV Highway", "origin": "Thailand", "year": "2025", "price": 225},
+  {"brand": "Goodyear", "model": "Wrangler AT Adventure", "size": "265/70R18", "type": "All-Terrain", "origin": "USA", "year": "2025", "price": 220},
+  {"brand": "Michelin", "model": "Primacy SUV+", "size": "275/65R18", "type": "SUV Highway", "origin": "Spain", "year": "2025–2026", "price": 230},
+  {"brand": "CEAT", "model": "CrossDrive AT", "size": "275/65R18", "type": "All-Terrain", "origin": "India", "year": "2025", "price": 115},
+  {"brand": "BFGoodrich", "model": "All-Terrain T/A KO3", "size": "275/65R18", "type": "All-Terrain", "origin": "USA", "year": "2025", "price": 165},
+  {"brand": "Bridgestone", "model": "Dueler H/T 684 II", "size": "275/65R18", "type": "SUV Highway", "origin": "Thailand", "year": "2026", "price": 225},
+  {"brand": "Nexen", "model": "Roadian HTX2", "size": "285/60R18", "type": "SUV Highway", "origin": "South Korea", "year": "2026", "price": 135},
+  {"brand": "Triangle", "model": "TR259", "size": "285/60R18", "type": "SUV Highway", "origin": "China", "year": "2025", "price": 130},
+  {"brand": "Pirelli", "model": "Scorpion Verde", "size": "285/60R18", "type": "SUV Highway", "origin": "Romania", "year": "2026", "price": 215, "hidePrice": true},
+  {"brand": "Yokohama", "model": "Geolandar H/T G056", "size": "285/60R18", "type": "SUV Highway", "origin": "Philippines", "year": "2025–2026", "price": 180},
+  {"brand": "Goodyear", "model": "EfficientGrip 2 SUV", "size": "285/60R18", "type": "SUV Highway", "origin": "Poland", "year": "2026", "price": 210},
+  {"brand": "Continental", "model": "CrossContact LX Sport", "size": "285/60R18", "type": "SUV Highway", "origin": "Portugal", "year": "2026", "price": 205},
+  {"brand": "Pirelli", "model": "P Zero", "size": "225/40R19", "type": "Performance", "origin": "Italy", "year": "2025", "price": 210, "hidePrice": true},
+  {"brand": "Goodyear", "model": "Eagle F1 Asymmetric 6", "size": "225/40R19", "type": "Performance", "origin": "Germany", "year": "2025", "price": 200},
+  {"brand": "Michelin", "model": "Pilot Sport 5", "size": "225/40R19", "type": "Performance", "origin": "France", "year": "2026", "price": 220},
+  {"brand": "Apollo", "model": "Aspire 4G", "size": "225/40R19", "type": "Performance", "origin": "India", "year": "2025", "price": 110},
+  {"brand": "Kumho", "model": "Solus HS63", "size": "225/55R19", "type": "All-Season", "origin": "South Korea", "year": "2025", "price": 120},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "225/55R19", "type": "All-Season", "origin": "Spain", "year": "2026", "price": 205},
+  {"brand": "Goodyear", "model": "Vector 4Seasons Gen-3", "size": "225/55R19", "type": "All-Season", "origin": "Poland", "year": "2025", "price": 175, "hidePrice": true},
+  {"brand": "MRF", "model": "ZLX", "size": "225/55R19", "type": "Summer", "origin": "India", "year": "2026", "price": 105},
+  {"brand": "Firestone", "model": "Roadhawk 2", "size": "225/55R19", "type": "Summer", "origin": "Spain", "year": "2025", "price": 120},
+  {"brand": "Triangle", "model": "TE301", "size": "225/55R19", "type": "Summer", "origin": "China", "year": "2025", "price": 95},
+  {"brand": "Goodyear", "model": "Eagle F1 Asymmetric 6", "size": "235/35R19", "type": "Performance", "origin": "Germany", "year": "2025–2026", "price": 195},
+  {"brand": "Sailun", "model": "Atrezzo ZSR", "size": "235/35R19", "type": "Performance", "origin": "China", "year": "2026", "price": 110},
+  {"brand": "Michelin", "model": "Pilot Sport 5", "size": "235/35R19", "type": "Performance", "origin": "France", "year": "2025", "price": 225},
+  {"brand": "Linglong", "model": "Sport Master", "size": "235/35R19", "type": "Performance", "origin": "China", "year": "2026", "price": 110},
+  {"brand": "Michelin", "model": "Pilot Sport 5", "size": "235/40R19", "type": "Performance", "origin": "France", "year": "2026", "price": 215},
+  {"brand": "Pirelli", "model": "P Zero", "size": "235/40R19", "type": "Performance", "origin": "Italy", "year": "2025", "price": 220},
+  {"brand": "Falken", "model": "Azenis FK520", "size": "235/40R19", "type": "Performance", "origin": "Japan", "year": "2026", "price": 160},
+  {"brand": "Hankook", "model": "Ventus S1 evo3", "size": "235/40R19", "type": "Performance", "origin": "South Korea", "year": "2025", "price": 170},
+  {"brand": "Apollo", "model": "Alnac 4G", "size": "235/55R19", "type": "Summer", "origin": "India", "year": "2026", "price": 110},
+  {"brand": "Goodyear", "model": "EfficientGrip Performance 2", "size": "235/55R19", "type": "Summer", "origin": "Germany", "year": "2026", "price": 190},
+  {"brand": "Goodyear", "model": "Vector 4Seasons Gen-3", "size": "235/55R19", "type": "All-Season", "origin": "Poland", "year": "2025", "price": 190},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "235/55R19", "type": "All-Season", "origin": "Spain", "year": "2025", "price": 190},
+  {"brand": "Nexen", "model": "N'Fera Sport", "size": "245/40R19", "type": "Performance", "origin": "South Korea", "year": "2026", "price": 135},
+  {"brand": "Yokohama", "model": "Advan Sport V107", "size": "245/40R19", "type": "Performance", "origin": "Japan", "year": "2025", "price": 170},
+  {"brand": "Michelin", "model": "Pilot Sport 5", "size": "245/40R19", "type": "Performance", "origin": "France", "year": "2026", "price": 230},
+  {"brand": "Apollo", "model": "Aspire 4G", "size": "245/40R19", "type": "Performance", "origin": "India", "year": "2026", "price": 125},
+  {"brand": "Goodyear", "model": "Eagle F1 Asymmetric 6", "size": "245/45R19", "type": "Performance", "origin": "Germany", "year": "2025", "price": 210, "hidePrice": true},
+  {"brand": "Linglong", "model": "Sport Master", "size": "245/45R19", "type": "Performance", "origin": "China", "year": "2026", "price": 125},
+  {"brand": "Nexen", "model": "N'Fera Sport", "size": "245/45R19", "type": "Performance", "origin": "South Korea", "year": "2025–2026", "price": 145},
+  {"brand": "Apollo", "model": "Aspire 4G", "size": "245/45R19", "type": "Performance", "origin": "India", "year": "2026", "price": 115},
+  {"brand": "Hankook", "model": "Ventus Prime 4", "size": "245/45R19", "type": "Summer", "origin": "South Korea", "year": "2025", "price": 155},
+  {"brand": "Triangle", "model": "Sportex TH201", "size": "255/35R19", "type": "Performance", "origin": "China", "year": "2026", "price": 115},
+  {"brand": "Apollo", "model": "Aspire 4G", "size": "255/35R19", "type": "Performance", "origin": "India", "year": "2025", "price": 120, "hidePrice": true},
+  {"brand": "Hankook", "model": "Ventus Prime 4", "size": "255/35R19", "type": "Summer", "origin": "South Korea", "year": "2026", "price": 170},
+  {"brand": "Michelin", "model": "Primacy 4+", "size": "255/35R19", "type": "Summer", "origin": "France", "year": "2025–2026", "price": 195},
+  {"brand": "Yokohama", "model": "Advan Sport V107", "size": "255/35R19", "type": "Performance", "origin": "Japan", "year": "2025–2026", "price": 170},
+  {"brand": "Toyo", "model": "Proxes Sport 2", "size": "255/35R19", "type": "Performance", "origin": "Japan", "year": "2025–2026", "price": 165},
+  {"brand": "Bridgestone", "model": "Potenza Sport", "size": "255/40R19", "type": "Performance", "origin": "Japan", "year": "2026", "price": 230},
+  {"brand": "Pirelli", "model": "P Zero", "size": "255/40R19", "type": "Performance", "origin": "Italy", "year": "2025–2026", "price": 205},
+  {"brand": "Michelin", "model": "Primacy 4+", "size": "255/40R19", "type": "Summer", "origin": "France", "year": "2026", "price": 230},
+  {"brand": "Hankook", "model": "Ventus Prime 4", "size": "255/40R19", "type": "Summer", "origin": "South Korea", "year": "2025", "price": 175},
+  {"brand": "Continental", "model": "SportContact 7", "size": "255/40R19", "type": "Performance", "origin": "Germany", "year": "2026", "price": 220},
+  {"brand": "Goodyear", "model": "Eagle F1 Asymmetric 6", "size": "255/40R19", "type": "Performance", "origin": "Germany", "year": "2026", "price": 215},
+  {"brand": "Michelin", "model": "Energy XM2+", "size": "255/50R19", "type": "Summer", "origin": "Thailand", "year": "2026", "price": 220},
+  {"brand": "Bridgestone", "model": "Turanza 6", "size": "255/50R19", "type": "Summer", "origin": "Japan", "year": "2026", "price": 220},
+  {"brand": "Kumho", "model": "Solus HS63", "size": "255/50R19", "type": "All-Season", "origin": "South Korea", "year": "2025–2026", "price": 145},
+  {"brand": "Dunlop", "model": "Enasave EC300+", "size": "255/50R19", "type": "Summer", "origin": "Japan", "year": "2026", "price": 175},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "265/55R19", "type": "All-Season", "origin": "Spain", "year": "2026", "price": 195},
+  {"brand": "Hankook", "model": "Ventus Prime 4", "size": "265/55R19", "type": "Summer", "origin": "South Korea", "year": "2025–2026", "price": 165},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "265/55R19", "type": "Summer", "origin": "Germany", "year": "2025", "price": 230},
+  {"brand": "Pirelli", "model": "Cinturato P7", "size": "265/55R19", "type": "Summer", "origin": "Turkey", "year": "2025", "price": 225},
+  {"brand": "Bridgestone", "model": "Turanza 6", "size": "265/55R19", "type": "Summer", "origin": "Japan", "year": "2026", "price": 210},
+  {"brand": "Michelin", "model": "Pilot Sport 5", "size": "275/35R19", "type": "Performance", "origin": "France", "year": "2025–2026", "price": 215},
+  {"brand": "Nexen", "model": "N'Fera Sport", "size": "275/35R19", "type": "Performance", "origin": "South Korea", "year": "2026", "price": 140},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "275/35R19", "type": "Summer", "origin": "Germany", "year": "2025", "price": 210},
+  {"brand": "Triangle", "model": "Sportex TH201", "size": "275/35R19", "type": "Performance", "origin": "China", "year": "2025", "price": 125},
+  {"brand": "Michelin", "model": "Primacy 4+", "size": "275/35R19", "type": "Summer", "origin": "France", "year": "2026", "price": 205},
+  {"brand": "Pirelli", "model": "P Zero", "size": "275/35R19", "type": "Performance", "origin": "Italy", "year": "2026", "price": 235},
+  {"brand": "Triangle", "model": "Sportex TH201", "size": "275/40R19", "type": "Performance", "origin": "China", "year": "2025", "price": 125},
+  {"brand": "Yokohama", "model": "Advan Sport V107", "size": "275/40R19", "type": "Performance", "origin": "Japan", "year": "2026", "price": 175},
+  {"brand": "Pirelli", "model": "P Zero", "size": "275/40R19", "type": "Performance", "origin": "Italy", "year": "2025", "price": 245},
+  {"brand": "Bridgestone", "model": "Potenza Sport", "size": "275/40R19", "type": "Performance", "origin": "Japan", "year": "2026", "price": 215},
+  {"brand": "Nexen", "model": "N'Fera Sport", "size": "275/40R19", "type": "Performance", "origin": "South Korea", "year": "2025", "price": 140},
+  {"brand": "Apollo", "model": "Aspire 4G", "size": "245/40R20", "type": "Performance", "origin": "India", "year": "2026", "price": 130},
+  {"brand": "Falken", "model": "Azenis FK520", "size": "245/40R20", "type": "Performance", "origin": "Japan", "year": "2026", "price": 190},
+  {"brand": "Michelin", "model": "Primacy 4+", "size": "245/40R20", "type": "Summer", "origin": "France", "year": "2025", "price": 220},
+  {"brand": "Yokohama", "model": "Advan Sport V107", "size": "245/40R20", "type": "Performance", "origin": "Japan", "year": "2025", "price": 175},
+  {"brand": "Michelin", "model": "Pilot Sport 5", "size": "245/45R20", "type": "Performance", "origin": "France", "year": "2025–2026", "price": 245},
+  {"brand": "Triangle", "model": "Sportex TH201", "size": "245/45R20", "type": "Performance", "origin": "China", "year": "2026", "price": 120},
+  {"brand": "Sailun", "model": "Atrezzo ZSR", "size": "245/45R20", "type": "Performance", "origin": "China", "year": "2025–2026", "price": 115},
+  {"brand": "Goodyear", "model": "Eagle F1 Asymmetric 6", "size": "245/45R20", "type": "Performance", "origin": "Germany", "year": "2026", "price": 245},
+  {"brand": "Michelin", "model": "Pilot Sport 5", "size": "255/45R20", "type": "Performance", "origin": "France", "year": "2025", "price": 255},
+  {"brand": "Sailun", "model": "Atrezzo ZSR", "size": "255/45R20", "type": "Performance", "origin": "China", "year": "2025", "price": 135},
+  {"brand": "Hankook", "model": "Ventus Prime 4", "size": "255/45R20", "type": "Summer", "origin": "South Korea", "year": "2025", "price": 180},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "255/45R20", "type": "Summer", "origin": "Germany", "year": "2025", "price": 235},
+  {"brand": "Kumho", "model": "Ecsta PS71", "size": "255/45R20", "type": "Performance", "origin": "South Korea", "year": "2025", "price": 170},
+  {"brand": "Yokohama", "model": "BluEarth-GT AE51", "size": "265/50R20", "type": "Summer", "origin": "Japan", "year": "2025", "price": 200},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "265/50R20", "type": "Summer", "origin": "Germany", "year": "2026", "price": 225},
+  {"brand": "Linglong", "model": "Green-Max HP010", "size": "265/50R20", "type": "Summer", "origin": "China", "year": "2026", "price": 120},
+  {"brand": "Kumho", "model": "Solus HS63", "size": "265/50R20", "type": "All-Season", "origin": "South Korea", "year": "2026", "price": 140},
+  {"brand": "Bridgestone", "model": "Turanza 6", "size": "265/50R20", "type": "Summer", "origin": "Japan", "year": "2025", "price": 210},
+  {"brand": "Michelin", "model": "CrossClimate 2", "size": "265/50R20", "type": "All-Season", "origin": "Spain", "year": "2025–2026", "price": 240},
+  {"brand": "Continental", "model": "SportContact 7", "size": "275/40R20", "type": "Performance", "origin": "Germany", "year": "2025", "price": 265},
+  {"brand": "Triangle", "model": "Sportex TH201", "size": "275/40R20", "type": "Performance", "origin": "China", "year": "2025", "price": 125},
+  {"brand": "Apollo", "model": "Aspire 4G", "size": "275/40R20", "type": "Performance", "origin": "India", "year": "2025–2026", "price": 135},
+  {"brand": "Goodyear", "model": "Eagle F1 Asymmetric 6", "size": "275/40R20", "type": "Performance", "origin": "Germany", "year": "2025", "price": 235},
+  {"brand": "Michelin", "model": "Pilot Sport 5", "size": "275/40R20", "type": "Performance", "origin": "France", "year": "2025", "price": 225},
+  {"brand": "Hankook", "model": "Ventus S1 evo3", "size": "275/40R20", "type": "Performance", "origin": "South Korea", "year": "2025", "price": 195},
+  {"brand": "CEAT", "model": "SecuraDrive", "size": "275/55R20", "type": "Summer", "origin": "India", "year": "2025", "price": 140},
+  {"brand": "Continental", "model": "PremiumContact 7", "size": "275/55R20", "type": "Summer", "origin": "Germany", "year": "2026", "price": 235},
+  {"brand": "Nexen", "model": "N'blue HD Plus", "size": "275/55R20", "type": "Summer", "origin": "South Korea", "year": "2025", "price": 160},
+  {"brand": "Yokohama", "model": "BluEarth-GT AE51", "size": "275/55R20", "type": "Summer", "origin": "Japan", "year": "2026", "price": 200},
+  {"brand": "Dunlop", "model": "Enasave EC300+", "size": "275/55R20", "type": "Summer", "origin": "Japan", "year": "2026", "price": 190},
+  {"brand": "Hankook", "model": "Dynapro HP2", "size": "275/60R20", "type": "SUV Highway", "origin": "South Korea", "year": "2025", "price": 210},
+  {"brand": "Michelin", "model": "Primacy SUV+", "size": "275/60R20", "type": "SUV Highway", "origin": "Spain", "year": "2026", "price": 240},
+  {"brand": "Pirelli", "model": "Scorpion Verde", "size": "275/60R20", "type": "SUV Highway", "origin": "Romania", "year": "2026", "price": 230},
+  {"brand": "Continental", "model": "CrossContact LX Sport", "size": "275/60R20", "type": "SUV Highway", "origin": "Portugal", "year": "2025–2026", "price": 255},
+  {"brand": "Hankook", "model": "Kinergy 4S2", "size": "285/50R20", "type": "All-Season", "origin": "South Korea", "year": "2026", "price": 180},
+  {"brand": "Yokohama", "model": "BluEarth-GT AE51", "size": "285/50R20", "type": "Summer", "origin": "Japan", "year": "2026", "price": 185},
+  {"brand": "Pirelli", "model": "Cinturato P7", "size": "285/50R20", "type": "Summer", "origin": "Turkey", "year": "2025–2026", "price": 255},
+  {"brand": "Michelin", "model": "Energy XM2+", "size": "285/50R20", "type": "Summer", "origin": "Thailand", "year": "2025–2026", "price": 255},
+  {"brand": "Toyo", "model": "Proxes Sport 2", "size": "265/45R21", "type": "Performance", "origin": "Japan", "year": "2026", "price": 215},
+  {"brand": "Hankook", "model": "Ventus Prime 4", "size": "265/45R21", "type": "Summer", "origin": "South Korea", "year": "2026", "price": 200},
+  {"brand": "Falken", "model": "Azenis FK520", "size": "265/45R21", "type": "Performance", "origin": "Japan", "year": "2025", "price": 220},
+  {"brand": "Hankook", "model": "Ventus S1 evo3", "size": "265/45R21", "type": "Performance", "origin": "South Korea", "year": "2025–2026", "price": 200},
+  {"brand": "Bridgestone", "model": "Potenza Sport", "size": "265/45R21", "type": "Performance", "origin": "Japan", "year": "2026", "price": 265},
+  {"brand": "Nexen", "model": "N'Fera Sport", "size": "285/45R22", "type": "Performance", "origin": "South Korea", "year": "2025–2026", "price": 195},
+  {"brand": "Sailun", "model": "Atrezzo ZSR", "size": "285/45R22", "type": "Performance", "origin": "China", "year": "2025", "price": 150},
+  {"brand": "Michelin", "model": "Primacy 4+", "size": "285/45R22", "type": "Summer", "origin": "France", "year": "2025", "price": 255},
+  {"brand": "Continental", "model": "SportContact 7", "size": "285/45R22", "type": "Performance", "origin": "Germany", "year": "2026", "price": 275}
+];
+/* ===== Translations =====
+   All page text lives here. {name} is filled in by the code.
+   A value can also be a function when the wording depends on a number. */
+const STRINGS = {
+  en: {
+    "title": "Alaywi Tires",
+    "logo": "Alaywi Tires",
+    "langBtn": "عربي", "langBtnLang": "ar", "langAria": "Switch to Arabic",
+    "nav.aria": "Main",
+    "nav.new": "New tires", "nav.used": "Used tires", "nav.services": "Services", "nav.about": "About", "nav.contact": "Contact",
+    "open247": "OPEN 24/7",
+    "wa": "WhatsApp", "waUs": "WhatsApp us",
+    "hero.h1": "Any tire. Any size. <span>Open 24/7.</span>",
+    "hero.lead": "New tires from every major brand in almost every size, plus hand-checked used tires. Pick your car below and see exactly which tires fit it.",
+    "hero.cta1": "Find tires for my car",
+    "hero.tag1": "Open 24 hours, 7 days", "hero.tag2": "Choueifat El Aamroussieh", "hero.tag3": "Roadside tire help",
+    "lesson.title": "How to read your tire size",
+    "lesson.w": "205 mm across the tread, wall to wall.",
+    "lesson.a": "Sidewall height is 55% of the width.",
+    "lesson.r": "Fits a 16-inch wheel. R means radial.",
+    "lesson.tip": "Your size is printed on the tire sidewall and on the sticker inside the driver's door.",
+    "finder.stock": "{models} tires from {brands} brands",
+    "finder.h2": "Find your tires",
+    "finder.p": "Search by your car, or by the size on your tire. Every choice narrows the list to tires that exist, so you never land on a size we can't match.",
+    "finder.demo": "Demo catalog: sample prices and stock",
+    "tabs.aria": "Search method", "tabs.car": "By vehicle", "tabs.size": "By tire size",
+    "f.make": "Make", "f.model": "Model", "f.years": "Years", "f.brand": "Brand",
+    "f.width": "Width", "f.height": "Height", "f.rim": "Rim",
+    "ph.make": "Choose make", "ph.model": "Choose model", "ph.makeFirst": "Pick a make first",
+    "ph.years": "Choose years", "ph.modelFirst": "Pick a model first",
+    "ph.anyBrand": "Any brand", "ph.carFirst": "Pick your car first",
+    "ph.anyWidth": "Any width", "ph.anyHeight": "Any height", "ph.widthFirst": "Pick width first",
+    "ph.anyRim": "Any rim", "ph.heightFirst": "Pick height first",
+    "clearSize": "Clear size",
+    "fit.intro": "Choose your car to see the tire sizes it was built for. Some cars take one size, others change size by trim, and some use different sizes on the front and rear.",
+    "fit.titleOne": "Your {car} takes one size",
+    "fit.titleMany": "Your {car} takes {n} possible sizes",
+    "fit.noteOne": "Every trim uses the same tire.",
+    "fit.noteMany": "The size depends on your trim and wheels. Tap yours to narrow the list, or keep all of them.",
+    "fit.noteStag": " Some versions use a different size on the rear.",
+    "fit.all": "All {n} sizes", "fit.notSure": "Not sure of my trim",
+    "fit.front": "Front", "fit.rear": "Rear",
+    "fit.brands": "{n} brands", "fit.usedToo": " · used too",
+    "type.aria": "Tire type", "type.any": "Any type",
+    "type.Summer": "Summer", "type.All-Season": "All-Season", "type.Performance": "Performance", "type.SUV Highway": "SUV Highway", "type.All-Terrain": "All-Terrain",
+    "sort.aria": "Sort", "sort.rec": "Sort: recommended", "sort.low": "Price: low to high", "sort.high": "Price: high to low", "sort.size": "Size",
+    "count.tires": (v) => `${v.n} ${v.n === 1 ? "tire" : "tires"}`,
+    "count.close": (v) => `${v.n} close ${v.n === 1 ? "match" : "matches"}`,
+    "count.for": "For {label}",
+    "count.pick": "Pick your car or tire size above to narrow this down",
+    "count.nearby": "Nearby sizes for {label}",
+    "count.noneTitle": "We can get it for you",
+    "count.noneLabel": "{label} isn't listed with these filters",
+    "count.noneAny": "Nothing listed with these filters",
+    "note.close": "None of our listed tires match {label} with these filters. These sizes are almost the same overall height and fit the same rim. Ask us before switching sizes, or message us and we'll get the exact size.",
+    "note.noneFilters": "Nothing is listed for this search. Try setting the brand or type back to \"Any\", or send it to us below and we'll check it for you.",
+    "note.none": "Nothing is listed for this search. Send it to us below and we'll check it for you.",
+    "more.showing": "Showing {shown} of {total}",
+    "more.more": "Show {n} more", "more.less": "Show fewer",
+    "help.titleExact": "Don't see the one you want?", "help.titleElse": "We can still get it for you",
+    "help.p": "We carry almost every size and brand. Send us {what} on WhatsApp and we'll confirm the price, or call {phone}.",
+    "help.thisSearch": "this search", "help.yourSize": "your size",
+    "help.waSearch": "WhatsApp this search",
+    "disclaim": "Prices are per tire in USD and can change. Fitment shown is the factory size for each trim; check your door sticker or ask us if your car has different wheels.",
+    "card.perTire": "/ tire", "card.contactPrice": "Contact for price", "card.made": "Year {y}", "card.origin": "Made in {c}",
+    "card.available": "Available",
+    "card.usedAlso": "Used also available", "card.details": "View details",
+    "card.aria": "{brand} {model} tire, size {size}",
+    "dlg.type": "{type} tire",
+    "dlg.size": "Size", "dlg.width": "Width", "dlg.height": "Height", "dlg.rim": "Rim", "dlg.made": "Year", "dlg.origin": "Made in", "dlg.avail": "Available", "dlg.used": "Used",
+    "dlg.mm": "{n} mm", "dlg.heightVal": "{a}% of width ({s} mm sidewall)", "dlg.inch": "{n} inch",
+    "dlg.usedVal": "Used tires in this size are usually available too",
+    "dlg.ask": "Ask on WhatsApp", "close": "Close",
+    "used.h2": "Usually available",
+    "used.p": "Hand-checked used tires in the sizes below. Stock changes every day, so tap your size to ask us on WhatsApp before you come. Contact us for price.",
+    "used.rims": "{r}\" rims", "used.usually": "Usually available", "used.ask": "Ask on WhatsApp",
+    "used.notListed": "Size not listed?", "used.askOther": "Ask about another size",
+    "svc.eyebrow": "In the bays", "svc.h2": "Our services",
+    "svc.p": "Most jobs are done while you wait. We're open around the clock, so come by whenever suits you.",
+    "svc.contact": "Contact for price", "svc.from": "From ${n}", "svc.viewInv": "View inventory", "svc.free": "Free",
+    "about.h2": "The tire shop that never closes",
+    "about.promiseLabel": "OUR PROMISE", "about.promise": "If a tire isn't safe, we won't sell it.",
+    "about.f1t": "24/7", "about.f1": "Open every hour of every day.",
+    "about.f2t": "Every brand", "about.f2": "All the major tire brands in almost every size.",
+    "about.f3t": "Roadside", "about.f3": "Flat tire on the road? Call us and we'll help.",
+    "about.p1": "Alaywi Tires is a family business in Choueifat El Aamroussieh. It started with a simple idea: drivers deserve a tire shop that tells them the truth about their tires, and that is there when they need it.",
+    "about.p2": "Every used tire is checked by hand for tread depth, patches, dry rot and sidewall damage before it goes on the rack. If it doesn't pass, we don't sell it. If you only need two tires instead of four, that's all you buy.",
+    "about.p3": "For new tires we carry all the major brands in almost every size, so most drivers leave with new tires on the same visit.",
+    "about.p4": "We're open 24 hours a day, 7 days a week. Whether it's a flat at 3 a.m. or an oil change on your way to work, come by and we'll get you back on the road.",
+    "contact.h2": "Come by any time",
+    "contact.p": "Found a tire on this page? Send us the size on WhatsApp and we'll have it ready when you arrive.",
+    "contact.hours": "Hours", "contact.open": "Open 24/7", "contact.openSub": "24 hours a day, 7 days a week",
+    "contact.call": "Call or WhatsApp", "contact.shopPhone": "Shop phone", "contact.waMobile": "WhatsApp and mobile",
+    "contact.location": "Location", "contact.area": "Choueifat El Aamroussieh, Lebanon", "contact.plus": "Plus code",
+    "contact.directions": "Get directions",
+    "footer.copy": "© {y} Alaywi Tires · <span class=\"ar\" lang=\"ar\" dir=\"rtl\">مؤسسة عليوي التجارية</span>",
+    "footer.services": "New tires · Used tires · Oil · Brakes · Wheel balancing · Roadside help",
+    "toSearch": "Back to search",
+    // WhatsApp messages (sent in the visitor's language)
+    "msg.hello": "Hello Alaywi Tires,",
+    "msg.generic": "{hello} I'm looking for tires.",
+    "msg.car": "{hello} I'm looking for tires for my {label}{brand}. What do you have?",
+    "msg.size": "{hello} I'm looking for tires in size {label}{brand}. What do you have?",
+    "msg.brand": ", preferably {b}",
+    "msg.used": "{hello} do you have used tires in size {s}?",
+    "msg.usedOther": "{hello} do you have used tires in size ",
+    "msg.tire": "{hello} is the {brand} {model} in {size}{price} available?",
+    "msg.price": " (${n} per tire)",
+  },
+
+  ar: {
+    "title": "إطارات عليوي",
+    "logo": "إطارات عليوي",
+    "langBtn": "English", "langBtnLang": "en", "langAria": "التبديل إلى الإنجليزية",
+    "nav.aria": "القائمة الرئيسية",
+    "nav.new": "إطارات جديدة", "nav.used": "إطارات مستعملة", "nav.services": "الخدمات", "nav.about": "من نحن", "nav.contact": "تواصل معنا",
+    "open247": "مفتوح 24/7",
+    "wa": "واتساب", "waUs": "راسلنا على واتساب",
+    "hero.h1": "أي إطار. أي مقاس. <span>مفتوح 24/7.</span>",
+    "hero.lead": "إطارات جديدة من كل الماركات الكبرى وبكل المقاسات تقريباً، بالإضافة إلى إطارات مستعملة مفحوصة يدوياً. اختر سيارتك في الأسفل وشاهد الإطارات التي تناسبها بالضبط.",
+    "hero.cta1": "ابحث عن إطارات لسيارتي",
+    "hero.tag1": "مفتوح 24 ساعة، 7 أيام", "hero.tag2": "الشويفات - العمروسية", "hero.tag3": "مساعدة على الطريق",
+    "lesson.title": "كيف تقرأ مقاس إطارك",
+    "lesson.w": "عرض الإطار 205 ملم من جانب إلى جانب.",
+    "lesson.a": "ارتفاع جانب الإطار يساوي 55% من عرضه.",
+    "lesson.r": "يركب على جنط 16 إنش. حرف R يعني إطار راديال.",
+    "lesson.tip": "تجد المقاس مكتوباً على جانب الإطار وعلى الملصق داخل باب السائق.",
+    "finder.stock": "إطارات: {models} · ماركات: {brands}",
+    "finder.h2": "ابحث عن إطاراتك",
+    "finder.p": "ابحث حسب سيارتك أو حسب المقاس المكتوب على إطارك. كل اختيار يضيّق القائمة إلى إطارات موجودة فعلاً، فلا تصل أبداً إلى مقاس غير متوفر.",
+    "finder.demo": "كتالوج تجريبي: الأسعار والمخزون للعرض فقط",
+    "tabs.aria": "طريقة البحث", "tabs.car": "حسب السيارة", "tabs.size": "حسب المقاس",
+    "f.make": "ماركة السيارة", "f.model": "الموديل", "f.years": "سنة الصنع", "f.brand": "ماركة الإطار",
+    "f.width": "العرض", "f.height": "الارتفاع", "f.rim": "الجنط",
+    "ph.make": "اختر الماركة", "ph.model": "اختر الموديل", "ph.makeFirst": "اختر الماركة أولاً",
+    "ph.years": "اختر السنوات", "ph.modelFirst": "اختر الموديل أولاً",
+    "ph.anyBrand": "كل الماركات", "ph.carFirst": "اختر سيارتك أولاً",
+    "ph.anyWidth": "كل العروض", "ph.anyHeight": "كل الارتفاعات", "ph.widthFirst": "اختر العرض أولاً",
+    "ph.anyRim": "كل المقاسات", "ph.heightFirst": "اختر الارتفاع أولاً",
+    "clearSize": "مسح المقاس",
+    "fit.intro": "اختر سيارتك لترى مقاسات الإطارات المصممة لها. بعض السيارات لها مقاس واحد، وبعضها يتغيّر مقاسها حسب الفئة، وبعضها يستخدم مقاساً مختلفاً للإطارات الأمامية والخلفية.",
+    "fit.titleOne": "سيارتك {car} لها مقاس واحد",
+    "fit.titleMany": (v) => `سيارتك ${v.car} لها ${v.n === 2 ? "مقاسان ممكنان" : v.n + " مقاسات ممكنة"}`,
+    "fit.noteOne": "كل الفئات تستخدم نفس الإطار.",
+    "fit.noteMany": "المقاس يعتمد على فئة سيارتك وجنوطها. اضغط على مقاسك لتضييق القائمة، أو اترك الكل.",
+    "fit.noteStag": " بعض الفئات تستخدم مقاساً مختلفاً للإطارات الخلفية.",
+    "fit.all": "كل المقاسات ({n})", "fit.notSure": "لست متأكداً من الفئة",
+    "fit.front": "أمامي", "fit.rear": "خلفي",
+    "fit.brands": "ماركات: {n}", "fit.usedToo": " · ومستعمل أيضاً",
+    "type.aria": "نوع الإطار", "type.any": "كل الأنواع",
+    "type.Summer": "صيفي", "type.All-Season": "لكل الفصول", "type.Performance": "رياضي", "type.SUV Highway": "SUV للطرقات", "type.All-Terrain": "لكل الطرقات (أوف رود)",
+    "sort.aria": "الترتيب", "sort.rec": "الترتيب: المقترح", "sort.low": "السعر: من الأقل إلى الأعلى", "sort.high": "السعر: من الأعلى إلى الأقل", "sort.size": "المقاس",
+    "count.tires": (v) => (v.n === 1 ? "إطار واحد" : `${v.n} إطار`),
+    "count.close": "مقاسات قريبة: {n}",
+    "count.for": "نتائج {label}",
+    "count.pick": "اختر سيارتك أو مقاس الإطار في الأعلى لتضييق النتائج",
+    "count.nearby": "مقاسات قريبة من {label}",
+    "count.noneTitle": "نستطيع تأمينه لك",
+    "count.noneLabel": "{label} غير موجود في القائمة مع هذه الفلاتر",
+    "count.noneAny": "لا يوجد شيء في القائمة مع هذه الفلاتر",
+    "note.close": "لا يوجد في القائمة إطار يطابق {label} مع هذه الفلاتر. هذه المقاسات لها تقريباً نفس الارتفاع الكلي وتركب على نفس الجنط. اسألنا قبل تغيير المقاس، أو راسلنا ونؤمّن لك المقاس نفسه.",
+    "note.noneFilters": "لا يوجد شيء في القائمة لهذا البحث. جرّب إعادة الماركة أو النوع إلى \"الكل\"، أو أرسل لنا طلبك في الأسفل ونتحقق لك منه.",
+    "note.none": "لا يوجد شيء في القائمة لهذا البحث. أرسل لنا طلبك في الأسفل ونتحقق لك منه.",
+    "more.showing": "عرض {shown} من {total}",
+    "more.more": "عرض المزيد ({n})", "more.less": "عرض أقل",
+    "help.titleExact": "لم تجد ما تريده؟", "help.titleElse": "ما زال بإمكاننا تأمينه لك",
+    "help.p": "نوفّر تقريباً كل المقاسات وكل الماركات. أرسل لنا {what} على واتساب ونؤكد لك السعر، أو اتصل على {phone}.",
+    "help.thisSearch": "هذا البحث", "help.yourSize": "مقاس إطارك",
+    "help.waSearch": "أرسل البحث على واتساب",
+    "disclaim": "الأسعار للإطار الواحد بالدولار الأميركي وقابلة للتغيير. المقاسات المعروضة هي مقاسات المصنع لكل فئة؛ تأكد من الملصق على باب السائق أو اسألنا إذا كانت جنوط سيارتك مختلفة.",
+    "card.perTire": "/ للإطار", "card.contactPrice": "تواصل معنا للسعر", "card.made": "صنع {y}", "card.origin": "المنشأ: {c}",
+    "card.available": "متوفر",
+    "card.usedAlso": "متوفر مستعمل أيضاً", "card.details": "التفاصيل",
+    "card.aria": "إطار {brand} {model} مقاس {size}",
+    "dlg.type": "إطار {type}",
+    "dlg.size": "المقاس", "dlg.width": "العرض", "dlg.height": "الارتفاع", "dlg.rim": "الجنط", "dlg.made": "سنة الصنع", "dlg.origin": "بلد المنشأ", "dlg.avail": "التوفر", "dlg.used": "مستعمل",
+    "dlg.mm": "{n} ملم", "dlg.heightVal": "{a}% من العرض (جانب الإطار {s} ملم)", "dlg.inch": "{n} إنش",
+    "dlg.usedVal": "عادةً تتوفر إطارات مستعملة بهذا المقاس أيضاً",
+    // Country names for "Made in". English uses the name from data.js as is.
+    "country.China": "الصين", "country.India": "الهند", "country.Japan": "اليابان", "country.South Korea": "كوريا الجنوبية",
+    "country.Malaysia": "ماليزيا", "country.Thailand": "تايلاند", "country.Indonesia": "إندونيسيا", "country.Philippines": "الفلبين",
+    "country.Vietnam": "فيتنام", "country.Taiwan": "تايوان", "country.Turkey": "تركيا", "country.France": "فرنسا",
+    "country.Germany": "ألمانيا", "country.Italy": "إيطاليا", "country.Spain": "إسبانيا", "country.Portugal": "البرتغال",
+    "country.Poland": "بولندا", "country.Romania": "رومانيا", "country.Czech Republic": "التشيك", "country.Hungary": "المجر",
+    "country.Slovakia": "سلوفاكيا", "country.Slovenia": "سلوفينيا", "country.Serbia": "صربيا", "country.Russia": "روسيا",
+    "country.USA": "الولايات المتحدة", "country.Mexico": "المكسيك", "country.Brazil": "البرازيل", "country.South Africa": "جنوب أفريقيا",
+    "dlg.ask": "اسأل على واتساب", "close": "إغلاق",
+    "used.h2": "متوفرة عادةً",
+    "used.p": "إطارات مستعملة مفحوصة يدوياً بالمقاسات أدناه. المخزون يتغيّر يومياً، لذا اضغط على مقاسك واسألنا على واتساب قبل أن تأتي. تواصل معنا لمعرفة السعر.",
+    "used.rims": "جنط {r} إنش", "used.usually": "متوفر عادةً", "used.ask": "اسأل على واتساب",
+    "used.notListed": "مقاسك غير موجود؟", "used.askOther": "اسأل عن مقاس آخر",
+    "svc.eyebrow": "في الورشة", "svc.h2": "خدماتنا",
+    "svc.p": "معظم الأعمال تُنجز وأنت تنتظر. نحن مفتوحون على مدار الساعة، فتعال في الوقت الذي يناسبك.",
+    "svc.contact": "تواصل معنا للسعر", "svc.from": "ابتداءً من ${n}", "svc.viewInv": "عرض المخزون", "svc.free": "مجاناً",
+    "about.h2": "محل الإطارات الذي لا يغلق أبوابه",
+    "about.promiseLabel": "وعدنا", "about.promise": "إذا لم يكن الإطار آمناً، لن نبيعه.",
+    "about.f1t": "24/7", "about.f1": "مفتوحون كل ساعة من كل يوم.",
+    "about.f2t": "كل الماركات", "about.f2": "كل ماركات الإطارات الكبرى وبكل المقاسات تقريباً.",
+    "about.f3t": "على الطريق", "about.f3": "إطار مثقوب على الطريق؟ اتصل بنا ونساعدك.",
+    "about.p1": "إطارات عليوي (مؤسسة عليوي التجارية) عمل عائلي في الشويفات - العمروسية. بدأت الفكرة ببساطة: من حق كل سائق أن يجد محل إطارات يقول له الحقيقة عن إطاراته، ويكون موجوداً عندما يحتاجه.",
+    "about.p2": "كل إطار مستعمل نفحصه يدوياً قبل أن نعرضه: عمق النقشة، الرقع، التشققات وأضرار الجوانب. إذا لم ينجح في الفحص لا نبيعه. وإذا كنت تحتاج إطارين فقط بدل أربعة، تشتري إطارين فقط.",
+    "about.p3": "للإطارات الجديدة نوفّر كل الماركات الكبرى وبكل المقاسات تقريباً، لذلك يغادر معظم زبائننا بإطارات جديدة في نفس الزيارة.",
+    "about.p4": "نحن مفتوحون 24 ساعة في اليوم، 7 أيام في الأسبوع. سواء انثقب إطارك عند الثالثة فجراً أو أردت تغيير الزيت في طريقك إلى العمل، تعال إلينا ونعيدك إلى الطريق.",
+    "contact.h2": "زورونا في أي وقت",
+    "contact.p": "وجدت إطاراً على هذه الصفحة؟ أرسل لنا المقاس على واتساب ونجهّزه قبل وصولك.",
+    "contact.hours": "ساعات العمل", "contact.open": "مفتوح 24/7", "contact.openSub": "24 ساعة في اليوم، 7 أيام في الأسبوع",
+    "contact.call": "اتصال أو واتساب", "contact.shopPhone": "هاتف المحل", "contact.waMobile": "واتساب وخلوي",
+    "contact.location": "الموقع", "contact.area": "الشويفات - العمروسية، لبنان", "contact.plus": "رمز الموقع",
+    "contact.directions": "الاتجاهات على الخريطة",
+    "footer.copy": "© {y} مؤسسة عليوي التجارية · <bdi dir=\"ltr\">Alaywi Tires</bdi>",
+    "footer.services": "إطارات جديدة · مستعملة · زيوت · فرامل · موازنة الجنوط · مساعدة على الطريق",
+    "toSearch": "العودة إلى البحث",
+    "msg.hello": "مرحباً إطارات عليوي،",
+    "msg.generic": "{hello} أبحث عن إطارات.",
+    "msg.car": "{hello} أبحث عن إطارات لسيارتي {label}{brand}. ماذا يتوفر لديكم؟",
+    "msg.size": "{hello} أبحث عن إطارات مقاس {label}{brand}. ماذا يتوفر لديكم؟",
+    "msg.brand": "، ويُفضّل ماركة {b}",
+    "msg.used": "{hello} هل لديكم إطارات مستعملة مقاس {s}؟",
+    "msg.usedOther": "{hello} هل لديكم إطارات مستعملة مقاس ",
+    "msg.tire": "{hello} هل إطار {brand} {model} مقاس {size}{price} متوفر؟",
+    "msg.price": " (السعر ${n} للإطار)",
+  },
+};
+/* ===== App ===== */
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const parse = (s) => { const m = s.match(/^(\d{3})\/(\d{2})R(\d{2})$/); return { w: +m[1], a: +m[2], r: +m[3] }; };
+const nice = (s) => s.replace("R", " R");                       // "205/55R16" -> "205/55 R16"
+const ltr = (html) => `<bdi dir="ltr">${html}</bdi>`;           // sizes and numbers always read left to right
+const money = (n) => "$" + (Number.isInteger(n) ? n : n.toFixed(2)); // 5.5 -> "$5.50"
+const diameter = (w, a, r) => r * 25.4 + 2 * w * a / 100;       // overall tire height in mm
+const uniqNum = (arr) => [...new Set(arr)].sort((x, y) => x - y);
+const PAGE = 12;
+
+INVENTORY.forEach((t, i) => { Object.assign(t, parse(t.size)); t.i = i; });
+const USED = new Set(USED_SIZES);
+const POPULAR = new Map(USED_SIZES.map((s, i) => [s, i]));
+
+// ---- Language ----
+let LANG = "en";
+try { const saved = localStorage.getItem("alaywi-lang"); if (saved === "ar" || saved === "en") LANG = saved; } catch {}
+function t(key, vars = {}) {
+  let s = STRINGS[LANG][key];
+  if (s === undefined) s = STRINGS.en[key];
+  if (s === undefined) return key;
+  if (typeof s === "function") return s(vars);
+  return s.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m));
+}
+const typeLabel = (type) => t("type." + type);
+const countryName = (c) => (LANG === "ar" && STRINGS.ar["country." + c]) || c;   // "Japan" -> "اليابان" in Arabic
+// In Arabic WhatsApp messages, wrap Latin text and sizes so they keep their order.
+const isolate = (s) => (LANG === "ar" ? `⁦${s}⁩` : s);
+
+// ---- Links ----
+const waLink = (msg) => `https://wa.me/${SHOP.whatsappIntl}?text=${encodeURIComponent(msg)}`;
+const telLink = () => `tel:${SHOP.phoneIntl}`;
+const mapsLink = () => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(SHOP.mapsQuery);
+const hello = () => t("msg.hello");
+
+function renderStatic() {
+  const root = document.documentElement;
+  root.lang = LANG;
+  root.dir = LANG === "ar" ? "rtl" : "ltr";
+  document.title = t("title");
+  document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll("[data-i18n-html]").forEach((el) => { el.innerHTML = t(el.dataset.i18nHtml); });
+  document.querySelectorAll("[data-i18n-aria]").forEach((el) => { el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
+  document.querySelectorAll("[data-shop]").forEach((el) => { el.textContent = SHOP[el.dataset.shop]; });
+  document.querySelectorAll("[data-href]").forEach((el) => {
+    const k = el.dataset.href;
+    el.href = k === "tel" ? telLink() : k === "maps" ? mapsLink()
+      : k === "wa-used" ? waLink(t("msg.usedOther", { hello: hello() })) : waLink(t("msg.generic", { hello: hello() }));
+  });
+  const btn = $("langBtn");
+  btn.textContent = t("langBtn");
+  btn.lang = t("langBtnLang");
+  btn.setAttribute("aria-label", t("langAria"));
+  $("copyright").innerHTML = t("footer.copy", { y: new Date().getFullYear() });
+  $("stockTotal").textContent = t("finder.stock", { models: INVENTORY.length, brands: new Set(INVENTORY.map((x) => x.brand)).size });
+
+  // Services
+  $("svcList").innerHTML = SERVICES.map((s) => {
+    const [name, text] = s[LANG] || s.en;
+    let p = typeof s.price === "number" ? money(s.price) : s.price === "free" ? t("svc.free") : String(s.price || "").startsWith("from:") ? t("svc.from", { n: s.price.slice(5) }) : t("svc.contact");
+    if (s.note) p += " " + (s.note[LANG] || s.note.en);
+    const foot = s.link
+      ? `<a class="svc-link" href="${esc(s.link)}">${esc(t("svc.viewInv"))}<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>`
+      : s.prices
+      ? `<div class="svc-price svc-prices">${s.prices.map((o) => `<div><span>${esc(o[LANG] || o.en)}</span>${ltr(esc(money(o.price)))}</div>`).join("")}</div>`
+      : `<div class="svc-price">${esc(p)}</div>`;
+    return `<li${s.link || s.wide ? ' class="wide"' : ""}><div class="svc-ico"><svg class="i" aria-hidden="true"><use href="#${s.icon}"/></svg></div><h3>${esc(name)}</h3><p>${esc(text)}</p>${foot}</li>`;
+  }).join("");
+
+  // Used tires: sizes only, no prices. Each size opens WhatsApp.
+  const byRim = {};
+  USED_SIZES.forEach((s) => { const r = parse(s).r; (byRim[r] ||= []).push(s); });
+  $("usedList").innerHTML = Object.keys(byRim).sort((a, b) => a - b).map((r) => {
+    const list = byRim[r].sort((x, y) => parse(x).w - parse(y).w || parse(x).a - parse(y).a);
+    return `<div class="ugroup"><h3>${esc(t("used.rims", { r }))}<small>${esc(t("used.usually"))}</small></h3><div class="ulinks">${list.map((s) =>
+      `<a class="ulink" href="${waLink(t("msg.used", { hello: hello(), s: isolate(s) }))}" target="_blank" rel="noopener">${ltr(nice(s))}<span>${esc(t("used.ask"))}</span></a>`).join("")}</div></div>`;
+  }).join("");
+}
+$("langBtn").addEventListener("click", () => {
+  LANG = LANG === "en" ? "ar" : "en";
+  try { localStorage.setItem("alaywi-lang", LANG); } catch {}
+  if (dlg.open) dlg.close();
+  renderStatic();
+  update(true);
+});
+
+// ---- Tire drawing ----
+// A side view of the tire. The wheel-to-sidewall proportions come from the real size,
+// so a low-profile 235/35 R19 looks different from a chunky 265/70 R16.
+const TREAD = {
+  "Summer":      { n: 54, fill: .62, rows: 1 },
+  "All-Season":  { n: 46, fill: .58, rows: 2 },
+  "Performance": { n: 72, fill: .72, rows: 1 },
+  "SUV Highway": { n: 44, fill: .64, rows: 1 },
+  "All-Terrain": { n: 28, fill: .6,  rows: 2 },
+};
+function tireSVG(t0, uid) {
+  const tr = t0;
+  const side = tr.w * tr.a / 100, rimD = tr.r * 25.4, D = rimD + 2 * side;
+  const C = 100, R = 94, tw = tr.type === "All-Terrain" ? 10 : 7.5;
+  const rimR = R * rimD / D;
+  const inner = R - tw, wall = inner - rimR, mid = rimR + wall / 2;
+  const fs = Math.max(6, Math.min(15, wall * 0.42));
+  const topR = mid - fs * 0.35, botR = mid + fs * 0.35;
+  const p = TREAD[tr.type] || TREAD.Summer;
+  const ring = (rad, width, off) => {
+    const seg = 2 * Math.PI * rad / p.n;
+    return `<circle cx="${C}" cy="${C}" r="${rad.toFixed(2)}" fill="none" stroke="#353a3e" stroke-width="${width.toFixed(2)}" stroke-dasharray="${(seg * p.fill).toFixed(2)} ${(seg * (1 - p.fill)).toFixed(2)}" stroke-dashoffset="${off.toFixed(2)}"/>`;
+  };
+  const tread = p.rows === 2
+    ? ring(R - tw * 0.27, tw * 0.48, 0) + ring(R - tw * 0.74, tw * 0.44, Math.PI * (R - tw * 0.74) / p.n)
+    : ring(R - tw / 2, tw - 1, 0);
+  const n = [5, 6, 10][tr.i % 3];
+  const spokeW = rimR * (n === 10 ? 0.09 : 0.16);
+  let spokes = "";
+  for (let k = 0; k < n; k++) {
+    const ang = (k / n) * Math.PI * 2 - Math.PI / 2;
+    const x1 = C + Math.cos(ang) * rimR * 0.24, y1 = C + Math.sin(ang) * rimR * 0.24;
+    const x2 = C + Math.cos(ang) * rimR * 0.84, y2 = C + Math.sin(ang) * rimR * 0.84;
+    spokes += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="url(#rm-${uid})" stroke-width="${spokeW.toFixed(2)}" stroke-linecap="round"/>`;
+  }
+  const label = t("card.aria", { brand: tr.brand, model: tr.model, size: nice(tr.size) });
+  return `<svg viewBox="0 0 200 200" role="img" aria-label="${esc(label)}" direction="ltr">
+    <defs>
+      <radialGradient id="sw-${uid}" cx="${C}" cy="${C}" r="${inner}" gradientUnits="userSpaceOnUse">
+        <stop offset="${(rimR / inner).toFixed(3)}" stop-color="#17191b"/><stop offset="${((rimR + wall * 0.55) / inner).toFixed(3)}" stop-color="#2a2d31"/><stop offset="1" stop-color="#141618"/>
+      </radialGradient>
+      <linearGradient id="rm-${uid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef0f2"/><stop offset=".55" stop-color="#b9bec3"/><stop offset="1" stop-color="#868c92"/></linearGradient>
+      <path id="tp-${uid}" d="M ${C - topR} ${C} A ${topR} ${topR} 0 0 1 ${C + topR} ${C}" fill="none"/>
+      <path id="bp-${uid}" d="M ${C - botR} ${C} A ${botR} ${botR} 0 0 0 ${C + botR} ${C}" fill="none"/>
+    </defs>
+    <circle cx="${C}" cy="${C}" r="${R}" fill="#0c0d0e"/>
+    ${tread}
+    <circle cx="${C}" cy="${C}" r="${inner}" fill="url(#sw-${uid})"/>
+    <circle cx="${C}" cy="${C}" r="${inner - 0.6}" fill="none" stroke="#3a3f43" stroke-width=".8"/>
+    <text class="sw-brand" font-size="${fs.toFixed(1)}" fill="#a4a9ae" text-anchor="middle"><textPath href="#tp-${uid}" startOffset="50%">${esc(tr.brand.toUpperCase())}</textPath></text>
+    <text class="sw-size" font-size="${(fs * 0.72).toFixed(1)}" fill="#6c7176" text-anchor="middle"><textPath href="#bp-${uid}" startOffset="50%">${tr.w}/${tr.a} R${tr.r}</textPath></text>
+    <circle cx="${C}" cy="${C}" r="${rimR.toFixed(2)}" fill="url(#rm-${uid})"/>
+    <circle cx="${C}" cy="${C}" r="${(rimR * 0.86).toFixed(2)}" fill="#25292c"/>
+    ${spokes}
+    <circle cx="${C}" cy="${C}" r="${(rimR * 0.27).toFixed(2)}" fill="url(#rm-${uid})"/>
+    <circle cx="${C}" cy="${C}" r="${(rimR * 0.11).toFixed(2)}" fill="#25292c"/>
+    <circle cx="${C}" cy="${C}" r="${rimR.toFixed(2)}" fill="none" stroke="#6f757a" stroke-width="1.2"/>
+  </svg>`;
+}
+
+// ---- State ----
+const state = {
+  mode: "car",
+  car: { make: "", model: "", years: "", brand: "" },
+  carPick: "",                         // index of the chosen fitment option, "" = all options
+  size: { w: null, a: null, r: null, brand: "" },
+  type: "", sort: "rec",
+  shown: PAGE,
+};
+
+function fitList() {
+  const { make, model, years } = state.car;
+  return make && model && years ? VEHICLES[make][model][years] : null;
+}
+// The exact sizes being searched for, or null when the search is not complete
+function targetSizes() {
+  if (state.mode === "car") {
+    const fit = fitList(); if (!fit) return null;
+    const opts = state.carPick === "" ? fit : [fit[+state.carPick]];
+    return [...new Set(opts.flatMap((f) => f[0].split("|")))];
+  }
+  const { w, a, r } = state.size;
+  return w && a && r ? [`${w}/${a}R${r}`] : null;
+}
+// Tires that match the size part of the search (before brand and type filters)
+function sizePool() {
+  if (state.mode === "car") { const tg = targetSizes(); return tg ? INVENTORY.filter((x) => tg.includes(x.size)) : INVENTORY; }
+  const { w, a, r } = state.size;
+  return INVENTORY.filter((x) => (w == null || x.w === w) && (a == null || x.a === a) && (r == null || x.r === r));
+}
+const chosenBrand = () => (state.mode === "car" ? state.car.brand : state.size.brand);
+const filtered = (list) => { const b = chosenBrand(); return list.filter((x) => (!b || x.brand === b) && (!state.type || x.type === state.type)); };
+function sorted(list) {
+  const pop = (x) => (POPULAR.has(x.size) ? POPULAR.get(x.size) : 999);
+  const bySize = (x, y) => x.r - y.r || x.w - y.w || x.a - y.a;
+  const fns = {
+    rec: (x, y) => pop(x) - pop(y) || bySize(x, y) || x.price - y.price,
+    low: (x, y) => (x.hidePrice || 0) - (y.hidePrice || 0) || x.price - y.price,
+    high: (x, y) => (x.hidePrice || 0) - (y.hidePrice || 0) || y.price - x.price,
+    size: (x, y) => bySize(x, y) || x.price - y.price,
+  };
+  return list.slice().sort(fns[state.sort]);
+}
+// Nearby sizes: same rim, overall diameter within 3%, width within 20 mm
+function closeMatches() {
+  const tg = targetSizes(); if (!tg) return [];
+  const goals = tg.map(parse);
+  return filtered(INVENTORY.filter((x) => !tg.includes(x.size) && goals.some((g) => {
+    const d = diameter(g.w, g.a, g.r);
+    return g.r === x.r && Math.abs(x.w - g.w) <= 20 && Math.abs(diameter(x.w, x.a, x.r) - d) / d <= 0.03;
+  })));
+}
+// What the visitor searched for. compact = "205/55R16" style for WhatsApp messages.
+function searchLabel(compact = false) {
+  const fmt = (s) => (compact ? s : nice(s));
+  if (state.mode === "car") {
+    const tg = targetSizes();
+    return tg ? `${state.car.years} ${state.car.make} ${state.car.model} (${tg.map(fmt).join(" / ")})` : "";
+  }
+  const { w, a, r } = state.size;
+  return w == null ? "" : `${w}/${a ?? "??"}${compact ? "" : " "}R${r ?? "??"}`;
+}
+function searchMessage() {
+  const label = searchLabel(true), b = chosenBrand();
+  if (!label) return t("msg.generic", { hello: hello() });
+  return t(state.mode === "car" ? "msg.car" : "msg.size", {
+    hello: hello(), label: isolate(label), brand: b ? t("msg.brand", { b: isolate(b) }) : "",
+  });
+}
+
+// ---- Vehicle panel ----
+function fillSelect(el, placeholder, values, current, label = (v) => v) {
+  el.innerHTML = `<option value="">${esc(placeholder)}</option>` +
+    values.map((v) => `<option value="${esc(v)}"${String(v) === String(current) ? " selected" : ""}>${esc(label(v))}</option>`).join("");
+}
+const brandsFor = (list) => [...new Set(list.map((x) => x.brand))].sort();
+function renderCar() {
+  const { make, model, years, brand } = state.car;
+  fillSelect($("make"), t("ph.make"), Object.keys(VEHICLES).sort(), make);
+  fillSelect($("model"), make ? t("ph.model") : t("ph.makeFirst"), make ? Object.keys(VEHICLES[make]).sort() : [], model);
+  $("model").disabled = !make;
+  fillSelect($("years"), model ? t("ph.years") : t("ph.modelFirst"), make && model ? Object.keys(VEHICLES[make][model]) : [], years);
+  $("years").disabled = !model;
+  const fit = fitList();
+  fillSelect($("carBrand"), fit ? t("ph.anyBrand") : t("ph.carFirst"), fit ? brandsFor(sizePool()) : [], brand);
+  $("carBrand").disabled = !fit;
+
+  if (!fit) { $("fit").innerHTML = `<p class="fit-note">${esc(t("fit.intro"))}</p>`; return; }
+  const one = fit.length === 1;
+  const options = fit.map(([sz, trims], idx) => {
+    const sizes = sz.split("|");
+    const label = sizes.length === 2
+      ? `<span class="sz"><small>${esc(t("fit.front"))}</small>${ltr(nice(sizes[0]))}</span><span class="sz"><small>${esc(t("fit.rear"))}</small>${ltr(nice(sizes[1]))}</span>`
+      : `<span class="sz">${ltr(nice(sz))}</span>`;
+    const brands = brandsFor(INVENTORY.filter((x) => sizes.includes(x.size))).length;
+    const usedToo = sizes.some((s) => USED.has(s)) ? t("fit.usedToo") : "";
+    return `<button type="button" class="fit-opt" data-pick="${idx}" aria-pressed="${one || state.carPick === String(idx)}">${label}<span class="tr">${ltr(esc(trims))}</span><span class="st">${esc(t("fit.brands", { n: brands }) + usedToo)}</span></button>`;
+  }).join("");
+  const staggered = fit.some((f) => f[0].includes("|"));
+  const car = ltr(esc(`${years} ${make} ${model}`));
+  $("fit").innerHTML = `
+    <div class="fit-title">${one ? t("fit.titleOne", { car }) : t("fit.titleMany", { car, n: fit.length })}</div>
+    <p class="fit-note">${esc((one ? t("fit.noteOne") : t("fit.noteMany")) + (staggered ? t("fit.noteStag") : ""))}</p>
+    <div class="fit-list">
+      ${one ? "" : `<button type="button" class="fit-opt" data-pick="" aria-pressed="${state.carPick === ""}"><span class="sz">${esc(t("fit.all", { n: fit.length }))}</span><span class="tr">${esc(t("fit.notSure"))}</span></button>`}
+      ${options}
+    </div>`;
+}
+function fixCarBrand() { if (state.car.brand && !brandsFor(sizePool()).includes(state.car.brand)) state.car.brand = ""; }
+$("make").addEventListener("change", (e) => { state.car = { make: e.target.value, model: "", years: "", brand: "" }; state.carPick = ""; update(); });
+$("model").addEventListener("change", (e) => {
+  state.car.model = e.target.value; state.carPick = "";
+  const gens = e.target.value ? Object.keys(VEHICLES[state.car.make][e.target.value]) : [];
+  state.car.years = gens.length === 1 ? gens[0] : "";
+  fixCarBrand(); update();
+});
+$("years").addEventListener("change", (e) => { state.car.years = e.target.value; state.carPick = ""; fixCarBrand(); update(); });
+$("carBrand").addEventListener("change", (e) => { state.car.brand = e.target.value; update(); });
+$("fit").addEventListener("click", (e) => { const b = e.target.closest(".fit-opt"); if (!b) return; state.carPick = b.dataset.pick; fixCarBrand(); update(); });
+
+// ---- Size panel: Width -> Height -> Rim -> Brand ----
+// Each dropdown only lists values that exist together with the choices made before it.
+function renderSize() {
+  const s = state.size;
+  const part = (v, ph) => `<span class="part ${v == null ? "empty" : "set"}">${v == null ? ph : v}</span>`;
+  $("readout").innerHTML = part(s.w, "???") + `<span class="sep">/</span>` + part(s.a, "??") + `<span class="rim-r">R</span>` + part(s.r, "??");
+  const ofW = INVENTORY.filter((x) => x.w === s.w);
+  fillSelect($("sw"), t("ph.anyWidth"), uniqNum(INVENTORY.map((x) => x.w)), s.w ?? "");
+  fillSelect($("sa"), s.w == null ? t("ph.widthFirst") : t("ph.anyHeight"), uniqNum(ofW.map((x) => x.a)), s.a ?? "");
+  $("sa").disabled = s.w == null;
+  fillSelect($("sr"), s.a == null ? t("ph.heightFirst") : t("ph.anyRim"), uniqNum(ofW.filter((x) => x.a === s.a).map((x) => x.r)), s.r ?? "", (v) => `R${v}`);
+  $("sr").disabled = s.a == null;
+  fillSelect($("sb"), t("ph.anyBrand"), brandsFor(sizePool()), s.brand);
+  $("clearSize").hidden = s.w == null && !s.brand;
+}
+function fixSize() {
+  const s = state.size;
+  if (s.w == null) { s.a = s.r = null; }
+  if (s.a != null && !INVENTORY.some((x) => x.w === s.w && x.a === s.a)) s.a = null;
+  if (s.a == null) s.r = null;
+  if (s.r != null && !INVENTORY.some((x) => x.w === s.w && x.a === s.a && x.r === s.r)) s.r = null;
+  if (s.brand && !brandsFor(sizePool()).includes(s.brand)) s.brand = "";
+}
+const num = (v) => (v === "" ? null : +v);
+$("sw").addEventListener("change", (e) => { state.size.w = num(e.target.value); fixSize(); update(); });
+$("sa").addEventListener("change", (e) => { state.size.a = num(e.target.value); fixSize(); update(); });
+$("sr").addEventListener("change", (e) => { state.size.r = num(e.target.value); fixSize(); update(); });
+$("sb").addEventListener("change", (e) => { state.size.brand = e.target.value; update(); });
+$("clearSize").addEventListener("click", () => { state.size = { w: null, a: null, r: null, brand: "" }; update(); });
+
+// ---- Tabs and filters ----
+function setMode(mode) {
+  state.mode = mode;
+  $("tab-car").setAttribute("aria-selected", mode === "car");
+  $("tab-size").setAttribute("aria-selected", mode === "size");
+  $("panel-car").hidden = mode !== "car";
+  $("panel-size").hidden = mode !== "size";
+  update();
+}
+$("tab-car").addEventListener("click", () => setMode("car"));
+$("tab-size").addEventListener("click", () => setMode("size"));
+$("type").addEventListener("change", (e) => { state.type = e.target.value; update(); });
+$("sort").addEventListener("change", (e) => { state.sort = e.target.value; update(); });
+
+// ---- Results ----
+const priceHTML = (x) => (x.hidePrice
+  ? `<div class="price ask">${esc(t("card.contactPrice"))}</div>`
+  : `<div class="price">${ltr("$" + x.price)}<small>${esc(t("card.perTire"))}</small></div>`);
+// Every new tire shows "Available". No stock numbers are shown to visitors.
+const availHTML = () => `<div class="avail">${esc(t("card.available"))}</div>`;
+function card(x) {
+  return `<article class="tire">
+    <div class="tire-img">${tireSVG(x, "c" + x.i)}</div>
+    <div class="tire-body">
+      <div class="brand-row"><span class="brand">${esc(x.brand)}</span>${USED.has(x.size) ? `<span class="badge-used">${esc(t("card.usedAlso"))}</span>` : ""}</div>
+      <div class="model">${ltr(esc(x.model))}</div>
+      <div class="tsize">${ltr(nice(x.size))}</div>
+      ${x.origin ? `<div class="origin"><svg class="i" aria-hidden="true"><use href="#i-flag"/></svg>${esc(t("card.origin", { c: countryName(x.origin) }))}</div>` : ""}
+      <div class="meta"><span>${esc(typeLabel(x.type))}</span><span>${esc(t("card.made", { y: x.year }))}</span></div>
+      ${availHTML(x)}
+      <div class="price-row">${priceHTML(x)}<button type="button" class="details" data-i="${x.i}">${esc(t("card.details"))}</button></div>
+    </div>
+  </article>`;
+}
+
+function renderResults() {
+  const exact = sorted(filtered(sizePool()));
+  let list = exact, mode = "exact";
+  if (!exact.length) { list = sorted(closeMatches()); mode = list.length ? "close" : "none"; }
+  const raw = searchLabel();
+  const label = raw ? ltr(esc(raw)) : "";
+
+  $("count").innerHTML = mode === "close"
+    ? `${esc(t("count.close", { n: list.length }))}<small>${t("count.nearby", { label })}</small>`
+    : mode === "none"
+    ? `${esc(t("count.noneTitle"))}<small>${label ? t("count.noneLabel", { label }) : esc(t("count.noneAny"))}</small>`
+    : `${esc(t("count.tires", { n: list.length }))}<small>${label ? t("count.for", { label }) : esc(t("count.pick"))}</small>`;
+
+  const filtersOn = state.type || chosenBrand();
+  $("noteBox").innerHTML = mode === "close"
+    ? `<div class="note">${t("note.close", { label })}</div>`
+    : mode === "none"
+    ? `<div class="note">${esc(t(filtersOn ? "note.noneFilters" : "note.none"))}</div>`
+    : "";
+
+  const shown = Math.min(state.shown, list.length);
+  $("grid").innerHTML = list.slice(0, shown).map(card).join("");
+
+  const more = [];
+  if (list.length) more.push(`<span class="shown">${esc(t("more.showing", { shown, total: list.length }))}</span>`);
+  if (shown < list.length) more.push(`<button type="button" class="btn primary" id="showMore"><svg class="i" aria-hidden="true"><use href="#i-down"/></svg>${esc(t("more.more", { n: Math.min(PAGE, list.length - shown) }))}</button>`);
+  if (shown > PAGE) more.push(`<button type="button" class="btn line" id="showLess"><svg class="i" aria-hidden="true"><use href="#i-up"/></svg>${esc(t("more.less"))}</button>`);
+  $("moreBox").innerHTML = more.join("");
+  $("moreBox").hidden = !list.length;
+
+  $("helpBox").innerHTML = `<div><b>${esc(t(mode === "exact" ? "help.titleExact" : "help.titleElse"))}</b>
+      <p>${t("help.p", { what: esc(t(raw ? "help.thisSearch" : "help.yourSize")), phone: ltr(esc(SHOP.phone)) })}</p></div>
+    <div class="acts"><a class="btn wa" href="${waLink(searchMessage())}" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg>${esc(t(raw ? "help.waSearch" : "waUs"))}</a>
+    <a class="btn line" href="${telLink()}"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>${ltr(esc(SHOP.phone))}</a></div>`;
+}
+$("moreBox").addEventListener("click", (e) => {
+  if (e.target.closest("#showMore")) { state.shown += PAGE; renderResults(); }
+  if (e.target.closest("#showLess")) { state.shown = PAGE; renderResults(); $("results").scrollIntoView({ behavior: "smooth" }); }
+});
+
+// keepShown: switching language keeps the list as long as it was
+function update(keepShown = false) {
+  if (!keepShown) state.shown = PAGE;     // any new search starts collapsed again
+  renderCar();
+  renderSize();
+  renderResults();
+}
+
+// ---- Details dialog ----
+const dlg = $("dlg");
+function openDetails(i) {
+  const x = INVENTORY[i];
+  $("dlgImg").innerHTML = tireSVG(x, "d" + x.i);
+  const priceText = x.hidePrice ? "" : t("msg.price", { n: x.price });
+  const msg = t("msg.tire", { hello: hello(), brand: isolate(x.brand), model: isolate(x.model), size: isolate(x.size), price: priceText });
+  $("dlgBody").innerHTML = `
+    <div class="eyebrow">${esc(t("dlg.type", { type: typeLabel(x.type) }))}</div>
+    <h3 id="dlgTitle">${esc(x.brand)}<br>${ltr(esc(x.model))}</h3>
+    <dl class="specs">
+      <dt>${esc(t("dlg.size"))}</dt><dd>${ltr(nice(x.size))}</dd>
+      <dt>${esc(t("dlg.width"))}</dt><dd>${esc(t("dlg.mm", { n: x.w }))}</dd>
+      <dt>${esc(t("dlg.height"))}</dt><dd>${esc(t("dlg.heightVal", { a: x.a, s: Math.round(x.w * x.a / 100) }))}</dd>
+      <dt>${esc(t("dlg.rim"))}</dt><dd>${esc(t("dlg.inch", { n: x.r }))}</dd>
+      ${x.origin ? `<dt>${esc(t("dlg.origin"))}</dt><dd>${esc(countryName(x.origin))}</dd>` : ""}
+      <dt>${esc(t("dlg.made"))}</dt><dd>${esc(x.year)}</dd>
+      <dt>${esc(t("dlg.avail"))}</dt><dd>${esc(t("card.available"))}</dd>
+      ${USED.has(x.size) ? `<dt>${esc(t("dlg.used"))}</dt><dd>${esc(t("dlg.usedVal"))}</dd>` : ""}
+    </dl>
+    ${priceHTML(x)}
+    <div class="dlg-acts">
+      <a class="btn wa" href="${waLink(msg)}" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg>${esc(t("dlg.ask"))}</a>
+      <a class="btn line" href="${telLink()}"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>${ltr(esc(SHOP.phone))}</a>
+    </div>`;
+  try { dlg.showModal(); } catch { dlg.setAttribute("open", ""); }
+}
+$("grid").addEventListener("click", (e) => { const b = e.target.closest(".details"); if (b) openDetails(+b.dataset.i); });
+$("dlgClose").addEventListener("click", () => dlg.close());
+dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });   // click outside the box closes it
+
+// ---- "Back to search" button: shows once the search panel has scrolled out of view ----
+const toSearch = $("toSearch");
+let ticking = false;
+function checkScroll() {
+  ticking = false;
+  toSearch.hidden = $("searchArea").getBoundingClientRect().bottom > 0;
+}
+window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(checkScroll); } }, { passive: true });
+toSearch.addEventListener("click", () => $("finder").scrollIntoView({ behavior: "smooth" }));
+
+renderStatic();
+update();
+checkScroll();
+</script>
+</body>
+</html>
